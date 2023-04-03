@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.5.1
   '@commitlint/config-conventional': ^17.4.4
+  '@tabler/icons-react': ^2.13.1
   '@types/node': 18.15.11
   '@types/react': 18.0.31
   '@types/react-dom': 18.0.11
@@ -11,6 +12,7 @@ specifiers:
   eslint-config-next: 13.2.4
   husky: ^8.0.3
   next: 13.2.4
+  next-themes: ^0.2.1
   postcss: ^8.4.21
   react: 18.2.0
   react-dom: 18.2.0
@@ -18,12 +20,14 @@ specifiers:
   typescript: 5.0.2
 
 dependencies:
+  '@tabler/icons-react': 2.13.1_react@18.2.0
   '@types/node': 18.15.11
   '@types/react': 18.0.31
   '@types/react-dom': 18.0.11
   eslint: 8.37.0
   eslint-config-next: 13.2.4_bcnce6t2n5ss3lv2getliffzhq
   next: 13.2.4_biqbaboplfbrettd7655fr4n2y
+  next-themes: 0.2.1_ld2jel3hspngo3u5lti2kgl2sq
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 5.0.2
@@ -479,6 +483,20 @@ packages:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
       tslib: 2.5.0
+    dev: false
+
+  /@tabler/icons-react/2.13.1_react@18.2.0:
+    resolution: {integrity: sha512-YPqwdEj5T/ld5Ub00yY96rbJbys5IrmssG8f+mzSUaj3zic4DEezZhRRslRk/9gnVeUW3Qfi4p16tiBdBMdxFQ==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tabler/icons': 2.13.1
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /@tabler/icons/2.13.1:
+    resolution: {integrity: sha512-hQkYW9+tnRUlnm3WDpNGLEB2FS6gyMdDb7eubmGjaWOtc9SK4CdBus465UGfx3M8FahlcOoS5BdzuaABrl/OMw==}
     dev: false
 
   /@tsconfig/node10/1.0.9:
@@ -2370,6 +2388,18 @@ packages:
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+    dev: false
+
+  /next-themes/0.2.1_ld2jel3hspngo3u5lti2kgl2sq:
+    resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
+    peerDependencies:
+      next: '*'
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      next: 13.2.4_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /next/13.2.4_biqbaboplfbrettd7655fr4n2y:
