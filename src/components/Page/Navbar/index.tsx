@@ -10,8 +10,8 @@ const Navbar = () => {
   const currentTheme = theme === 'system' ? systemTheme : theme;
   
   return (
-    <header className='max-w-screen-xl mx-auto py-12'>
-      <nav className='flex items-center justify-between'>
+    <header className='sticky top-0 py-6 backdrop-filter backdrop-blur-md bg-white/80'>
+      <nav className='max-w-screen-xl mx-auto flex items-center justify-between'>
         <div className="flex items-center space-x-12">
           <Link href="/" className='flex items-center space-x-2'>
             <Logo className='w-10 h-10 rounded' />
