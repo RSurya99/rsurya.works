@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { IconChevronRight } from '@tabler/icons-react'
 import { useRouter } from 'next/router'
@@ -11,13 +11,19 @@ const Footer = () => {
     path.pop()
     router.push(path.join('/') || '/')
   }
+  useEffect(() => {
+    console.log('router', router)
+  })
+  const smallWidthRoutes = ['/projects/[id]', '/blog/[id]']
   return (
     <footer className="max-w-screen-xl mx-auto pb-6 space-y-6">
       {router.pathname !== '/' && (
-        <button onClick={goBack} className='flex items-center font-medium text-primary/75 dark:text-slate-50/75 hover:text-primary hover:dark:text-slate-50 hover:underline transition-colors duration-300'>
-          <IconChevronRight size={20} />
-          <span>cd ..</span>
-        </button>
+        <div className={`w-full mx-auto${smallWidthRoutes.includes(router.pathname) ? ' max-w-5xl' : ''}`}>
+          <button onClick={goBack} className='flex items-center font-medium text-primary/75 dark:text-slate-50/75 hover:text-primary hover:dark:text-slate-50 hover:underline transition-colors duration-300'>
+            <IconChevronRight size={20} />
+            <span>cd ..</span>
+          </button>
+        </div>
       )}
       <hr className="bg-primary/50" />
       <div className="flex justify-between">

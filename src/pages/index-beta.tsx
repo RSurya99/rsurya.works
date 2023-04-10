@@ -79,7 +79,7 @@ export default function Home() {
           {[1, 2, 3, 4, 5, 6].map(el => (
             <div key={el} className="mb-2 bg-primary dark:bg-slate-50/90 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
               <div className="inline-block p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
-                <Image src="/static/images/project/tereby.png" width={32} height={32} alt="Tereby Project" />
+                <Image src="/static/images/project/tereby/logo.png" width={32} height={32} alt="Tereby Project" />
               </div>
               <h4 className="text-2xl font-semibold text-white dark:text-primary leading-tight">Tereby</h4>
               <p className="text-white/75 dark:text-primary/75 tracking-wide leading-relaxed">Platform to watch 100+ Television Channel worldwide for free.</p>
