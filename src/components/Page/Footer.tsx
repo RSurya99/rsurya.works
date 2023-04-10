@@ -11,9 +11,6 @@ const Footer = () => {
     path.pop()
     router.push(path.join('/') || '/')
   }
-  useEffect(() => {
-    console.log('router', router)
-  })
   const smallWidthRoutes = ['/projects/[id]', '/blog/[id]']
   return (
     <footer className="max-w-screen-xl mx-auto pb-6 space-y-6">

@@ -4,6 +4,7 @@ import { IconFile } from "@tabler/icons-react";
 import { IconLink } from "@tabler/icons-react";
 import { IconChevronRight } from "@tabler/icons-react";
 import Image from "next/image";
+import Link from "next/link";
 import Character from "~/components/Character";
 
 export default function Home() {
@@ -77,7 +78,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-3 gap-8">
           {[1, 2, 3, 4, 5, 6].map(el => (
-            <div key={el} className="mb-2 bg-primary dark:bg-slate-50/90 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
+            <Link href={`/projects/${el}`} key={el} className="mb-2 bg-primary dark:bg-slate-50/90 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
               <div className="inline-block p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
                 <Image src="/static/images/project/tereby/logo.png" width={32} height={32} alt="Tereby Project" />
               </div>
@@ -89,11 +90,11 @@ export default function Home() {
                   <div className="px-2 py-1 rounded-full bg-white dark:bg-primary text-primary/75 dark:text-slate-50/75">TailwindCSS</div>
                 </div>
                 <div className="flex space-x-2 text-white dark:text-primary">
-                  <a href="#"><IconLink /></a>
-                  <a href="#"><IconBrandGithub /></a>
+                  <div><IconLink /></div>
+                  <div><IconBrandGithub /></div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <button className="p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
