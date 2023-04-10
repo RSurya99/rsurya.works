@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className="max-w-screen-xl mx-auto pb-6 space-y-6">
       {router.pathname !== '/' && (
-        <button onClick={goBack} className='flex items-center font-medium text-primary/75 dark:text-slate-50/75 hover:text-primary hover:dark:text-slate-50 transition-colors duration-300'>
+        <button onClick={goBack} className='flex items-center font-medium text-primary/75 dark:text-slate-50/75 hover:text-primary hover:dark:text-slate-50 hover:underline transition-colors duration-300'>
           <IconChevronRight size={20} />
           <span>cd ..</span>
         </button>
