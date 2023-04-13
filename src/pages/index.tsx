@@ -9,7 +9,7 @@ function Home() {
         <h1 className="text-5xl font-semibold mb-1.5">
           This page is under development
         </h1>
-        <p className='text-lg text-primary/75 dark:text-slate-50/75'>Soon I promise</p>
+        <p className='text-lg text-primary-300 dark:text-zinc-200'>Soon I promise</p>
       </section>
     </>
   )

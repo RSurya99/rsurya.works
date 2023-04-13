@@ -8,7 +8,7 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <div className="relative font-rubik antialiased w-full min-h-screen duration-300 transition text-primary dark:text-slate-50 bg-white dark:bg-primary">
+    <div className="relative font-rubik antialiased w-full min-h-screen duration-300 transition text-primary dark:text-zinc-50 bg-white dark:bg-primary">
       <Navbar />
       <main className="max-w-screen-xl mx-auto">{children}</main>
       <Footer />

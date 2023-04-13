@@ -29,18 +29,18 @@ const Footer = () => {
     <footer className="max-w-screen-xl mx-auto pb-6 space-y-6">
       {router.pathname !== '/' && (
         <div className={`w-full mx-auto${isRoutesInclude(router.pathname) ? ' max-w-5xl' : ''}`}>
-          <button onClick={goBack} className='flex items-center font-medium text-primary/75 dark:text-slate-50/75 hover:text-primary hover:dark:text-slate-50 hover:underline transition-colors duration-300'>
+          <button onClick={goBack} className='flex items-center font-medium text-primary-300 dark:text-zinc-200 hover:text-primary hover:dark:text-zinc-50 hover:underline transition-colors duration-300'>
             <IconChevronRight size={20} />
             <span>cd ..</span>
           </button>
         </div>
       )}
-      <hr className="bg-primary/50" />
+      <hr className="bg-primary-300" />
       <div className="flex justify-between">
         <div className="flex items-center space-x-8">
-          <Link href="/reading-list" className="font-medium text-primary/75 dark:text-slate-50/75 hover:text-primary hover:dark:text-slate-50 transition-colors duration-300">/reading-list</Link>
-          <Link href="/cheatsheet" className="font-medium text-primary/75 dark:text-slate-50/75 hover:text-primary hover:dark:text-slate-50 transition-colors duration-300">/cheatsheet</Link>
-          <Link href="/wiki" className="font-medium text-primary/75 dark:text-slate-50/75 hover:text-primary hover:dark:text-slate-50 transition-colors duration-300">/wiki</Link>
+          <Link href="/reading-list" className="font-medium text-primary-300 dark:text-zinc-200 hover:text-primary hover:dark:text-zinc-50 transition-colors duration-300">/reading-list</Link>
+          <Link href="/cheatsheet" className="font-medium text-primary-300 dark:text-zinc-200 hover:text-primary hover:dark:text-zinc-50 transition-colors duration-300">/cheatsheet</Link>
+          <Link href="/wiki" className="font-medium text-primary-300 dark:text-zinc-200 hover:text-primary hover:dark:text-zinc-50 transition-colors duration-300">/wiki</Link>
         </div>
         <div className="flex items-center space-x-8">
           <a href="https://github.com/rsurya99" target='_blank' className="font-medium border-b-2 border-transparent hover:border-primary transition-colors duration-300">Github</a>

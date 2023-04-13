@@ -7,11 +7,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#282A2B',
+        primary: {
+          DEFAULT: '#282A2B',
+          300: '#282a2bbf',
+        },
       },
       fontFamily: {
         rubik: ['Rubik', 'sans-serif']
-      }
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: theme('colors.primary'),
+            hr: {
+              borderColor: theme('colors.slate.100'),
+              marginTop: '3em',
+              marginBottom: '3em',
+            },
+          },
+        }
+      })
     }
   },
   plugins: [

@@ -31,10 +31,10 @@ const ProjectDetail = () => {
         </div>
         <div className="space-y-4">
           <h1 className="text-5xl font-semibold leading-tight">Tereby</h1>
-          <p className="text-lg tracking-wide leading-relaxed text-primary/75 dark:text-slate-50/75">
+          <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">
           Praesent porttitor, urna sollicitudin auctor maximus, nisl mi hendrerit tellus, at aliquet leo sapien non quam. Ut quis vulputate diam, ac molestie augue. Duis placerat urna non magna placerat, sed interdum diam tempor. Maecenas pharetra rutrum mauris ac ultricies. Praesent non auctor tortor. Aenean eu commodo erat. Quisque a urna purus. Ut ultricies pellentesque felis eu ornare. Etiam ut ante eleifend metus laoreet bibendum ut ut sapien. Morbi placerat erat in erat hendrerit, ac vulputate est egestas. Aenean sit amet porta nunc. Vestibulum turpis ex, hendrerit eu auctor ac, maximus in massa. Mauris lobortis libero mauris, quis tincidunt lacus congue non. In ipsum nibh, lobortis id ex vitae, condimentum luctus ante. Sed malesuada sollicitudin enim quis euismod. Suspendisse mollis ornare libero nec interdum.
           </p>
-          <p className="text-lg tracking-wide leading-relaxed text-primary/75 dark:text-slate-50/75">
+          <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">
           Suspendisse potenti. Curabitur quis semper nunc. Phasellus urna nibh, fermentum sed dui eu, vulputate pharetra augue. Aliquam sed felis sed nibh pharetra dapibus. In sollicitudin a est vel dapibus. Aenean aliquet pulvinar tincidunt. Pellentesque congue risus tortor. Fusce lacinia luctus viverra.
           </p>
         </div>
