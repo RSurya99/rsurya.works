@@ -1,3 +1,4 @@
+import DefaultLayout from '~/layouts/default'
 import { IconClockHour3 } from '@tabler/icons-react'
 import { IconBrandGithub } from '@tabler/icons-react'
 import { IconExternalLink } from '@tabler/icons-react'
@@ -5,12 +6,12 @@ import { IconCalendar } from '@tabler/icons-react'
 import Image from 'next/image'
 import React from 'react'
 
-const about = () => {
+const ProjectDetail = () => {
   return (
     <section className='w-full max-w-5xl mx-auto py-12 space-y-8'>
       <Image src='/static/images/project/tereby/preview.png' width={1024} height={728} alt='Project Preview' className='rounded-xl' />
         <div className="flex items-center space-x-8 font-medium mb-4">
-          <a href="#" className='underline'>#Website</a>
+          <a href="#" className='underline'>#website</a>
           <div className="flex items-center">
             <IconCalendar className='mr-1.5' />
             Feb 24, 2022
@@ -41,4 +42,8 @@ const about = () => {
   )
 }
 
-export default about
+
+ProjectDetail.getLayout = (page: React.ReactNode) => (
+  <DefaultLayout>{page}</DefaultLayout>
+)
+export default ProjectDetail

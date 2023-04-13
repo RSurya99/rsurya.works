@@ -1,6 +1,8 @@
+import DefaultLayout from '~/layouts/default'
 import Head from 'next/head'
+import React from 'react'
 
-export default function Home() {
+function Home() {
   return (
     <>
       <section className='w-full min-h-[75vh] flex flex-col items-center justify-center'>
@@ -12,3 +14,9 @@ export default function Home() {
     </>
   )
 }
+
+Home.getLayout = (page: React.ReactNode) => (
+  <DefaultLayout>{page}</DefaultLayout>
+)
+
+export default Home

@@ -1,10 +1,20 @@
 import '~/assets/css/app.css'
 import type { AppProps } from 'next/app'
-import Layout from '~/layouts/default'
 import Head from 'next/head'
 import { ThemeProvider } from "next-themes"
+import DefaultLayout from '~/layouts/default'
 
-export default function App({ Component, pageProps }: AppProps) {
+type Page = {
+  getLayout?: (page: React.ReactElement) => React.ReactNode,
+  layout?: React.ComponentType
+}
+
+type Props = AppProps & {
+  Component: Page
+}
+
+export default function App({ Component, pageProps }: Props) {
+  const getLayout = Component.getLayout || ((page: any) => page)
   return (
     <>
       <Head>
@@ -14,10 +24,14 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider attribute="class">
-        <Layout>
+        <DefaultLayout>
           <Component {...pageProps} />
-        </Layout>
+        </DefaultLayout>
       </ThemeProvider>
     </>
   )
 }
+
+App.getLayout = (page: React.ReactNode) => (
+  <DefaultLayout>{page}</DefaultLayout>
+)

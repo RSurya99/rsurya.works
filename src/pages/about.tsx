@@ -1,4 +1,5 @@
 import React from 'react'
+import DefaultLayout from '~/layouts/default'
 
 const about = () => {
   return (
@@ -43,5 +44,9 @@ const about = () => {
     </section>
   )
 }
+
+about.getLayout = (page: React.ReactNode) => (
+  <DefaultLayout>{page}</DefaultLayout>
+)
 
 export default about

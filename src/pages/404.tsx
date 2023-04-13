@@ -1,3 +1,5 @@
+import DefaultLayout from '~/layouts/default'
+
 export default function Error404() {
   return (
     <>
@@ -11,3 +13,7 @@ export default function Error404() {
     </>
   )
 }
+
+Error404.getLayout = (page: React.ReactNode) => (
+  <DefaultLayout>{page}</DefaultLayout>
+)

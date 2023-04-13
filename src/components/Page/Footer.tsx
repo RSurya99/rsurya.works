@@ -11,11 +11,24 @@ const Footer = () => {
     path.pop()
     router.push(path.join('/') || '/')
   }
-  const smallWidthRoutes = ['/projects/[id]', '/blog/[id]']
+  useEffect(() => {
+    console.log('router', router.pathname.split('/'))
+  }, [])
+
+  const smallWidthRoutes = ['/projects/[id]', '/blog/[id]', '/cheatsheet/[id]', '/wiki/[id]', '/reading-list/[id]']
+
+  const isRoutesInclude = (path: string) => {
+    const splittedPath = path.split('/')
+    if(splittedPath.length >= 3 && ['cheatsheet'].includes(splittedPath[1])){
+      return true
+    }
+    return smallWidthRoutes.includes(path)
+  }
+
   return (
     <footer className="max-w-screen-xl mx-auto pb-6 space-y-6">
       {router.pathname !== '/' && (
-        <div className={`w-full mx-auto${smallWidthRoutes.includes(router.pathname) ? ' max-w-5xl' : ''}`}>
+        <div className={`w-full mx-auto${isRoutesInclude(router.pathname) ? ' max-w-5xl' : ''}`}>
           <button onClick={goBack} className='flex items-center font-medium text-primary/75 dark:text-slate-50/75 hover:text-primary hover:dark:text-slate-50 hover:underline transition-colors duration-300'>
             <IconChevronRight size={20} />
             <span>cd ..</span>

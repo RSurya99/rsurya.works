@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import React from 'react'
+import DefaultLayout from '~/layouts/default'
 
 const PostDetail = () => {
   const router = useRouter()
@@ -10,5 +11,9 @@ const PostDetail = () => {
     </section>
   )
 }
+
+PostDetail.getLayout = (page: React.ReactNode) => (
+  <DefaultLayout>{page}</DefaultLayout>
+)
 
 export default PostDetail

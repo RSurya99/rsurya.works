@@ -1,3 +1,4 @@
+import DefaultLayout from '~/layouts/default'
 import { IconArrowNarrowRight } from "@tabler/icons-react";
 import { IconBrandGithub } from "@tabler/icons-react";
 import { IconFile } from "@tabler/icons-react";
@@ -151,3 +152,8 @@ export default function Home() {
     </div>
   )
 }
+
+
+Home.getLayout = (page: React.ReactNode) => (
+  <DefaultLayout>{page}</DefaultLayout>
+)

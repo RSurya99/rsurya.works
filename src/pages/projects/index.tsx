@@ -1,3 +1,4 @@
+import DefaultLayout from '~/layouts/default'
 import { IconBrandGithub } from '@tabler/icons-react'
 import { IconArrowNarrowRight } from '@tabler/icons-react'
 import { IconLink } from '@tabler/icons-react'
@@ -100,4 +101,8 @@ const projects = () => {
   )
 }
 
+
+projects.getLayout = (page: React.ReactNode) => (
+  <DefaultLayout>{page}</DefaultLayout>
+)
 export default projects

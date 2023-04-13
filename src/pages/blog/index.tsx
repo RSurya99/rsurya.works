@@ -1,7 +1,8 @@
 import React from 'react'
+import DefaultLayout from '~/layouts/default'
 import Link from 'next/link'
 
-const Blog = () => {
+const BlogIndex = () => {
   return (
     <section className="max-w-screen-xl mx-auto">
       <div>Blog page</div>
@@ -10,4 +11,8 @@ const Blog = () => {
   )
 }
 
-export default Blog
+
+BlogIndex.getLayout = (page: React.ReactNode) => (
+  <DefaultLayout>{page}</DefaultLayout>
+)
+export default BlogIndex
