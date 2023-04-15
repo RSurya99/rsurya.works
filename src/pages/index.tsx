@@ -182,10 +182,10 @@ export default function Home({ latestCheatsheets }: any) {
             ))}
           </div>
         </div>
-        <button className="p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
+        <Link href='/cheatsheet' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
           View all cheatsheet
           <IconArrowNarrowRight className="ml-2" />
-        </button>
+        </Link>
       </section>
     </div>
   )
