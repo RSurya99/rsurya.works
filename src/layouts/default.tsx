@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import Navbar from "~/components/page/Navbar/index"
+import Navbar from "~/components/page/Navbar"
 import Footer from "~/components/page/Footer"
 
 type Props = {
