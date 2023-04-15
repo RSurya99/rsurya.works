@@ -7,8 +7,19 @@ import { IconChevronRight } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import Character from "~/components/utils/Character";
+import { getLatestCheatsheetsMeta } from '~/lib/cheatsheets'
 
-export default function Home() {
+export async function getStaticProps() {
+  const latestCheatsheets = getLatestCheatsheetsMeta(6)
+
+  return {
+    props: {
+      latestCheatsheets
+    }
+  }
+}
+
+export default function Home({ latestCheatsheets }: any) {
   return (
     <div className="space-y-12">
       {/* Landing Section */}
@@ -134,13 +145,13 @@ export default function Home() {
           <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">I’ve learned a lot of things, but I have forgotten a lot.</p>
         </div>
         <div>
-          <div className="inline-block p-2.5 bg-primary dark:bg-zinc-200 text-white dark:text-primary rounded-tr-lg rounded-tl-lg">~/Javascript</div>
-          <div className="border border-primary dark:border-zinc-200 grid grid-cols-6 gap-x-6 gap-y-1 p-2">
-            {Array(24).fill('').map((el, i) => i).map(el => (
-              <a key={el} className="px-3 py-2 flex items-center hover:bg-zinc-100 hover:dark:bg-zinc-700 cursor-pointer">
+          <div className="inline-block p-2.5 bg-primary dark:bg-zinc-200 text-white dark:text-primary rounded-tr-lg rounded-tl-lg">~/Latest</div>
+          <div className="border border-primary dark:border-zinc-200 grid grid-cols-3 gap-x-6 gap-y-1 p-2">
+            {latestCheatsheets.map((cheatsheet: any) => (
+              <Link key={cheatsheet.slug} href={`/cheatsheet/${cheatsheet.slug}`} className="px-3 py-2 flex items-center hover:bg-zinc-100 hover:dark:bg-zinc-700 cursor-pointer">
                 <IconFile className="mr-2" />
-                javascript-uuid
-              </a>
+                {cheatsheet.slug}
+              </Link>
             ))}
           </div>
         </div>

@@ -71,6 +71,14 @@ export const getCheatsheetMeta = (slug: any) => {
   return meta
 }
 
+export const getLatestCheatsheetsMeta = (length?: number) => {
+  const cheatsheets = getAllCheatsheetsMeta()
+  if(length){
+    return cheatsheets.slice(0, length)
+  }
+  return cheatsheets
+}
+
 export const getAllCheatsheetsMeta = () => {
   const files = fs.readdirSync(rootDirectory)
   const cheatsheets = files
