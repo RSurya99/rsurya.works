@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import Logo from '~/components/Logo'
+import Logo from '~/components/utils/Logo'
 import NavMenu from './NavMenu'
 import { IconBrandGithub, IconBrandTwitter, IconBrandLinkedin, IconMoon } from '@tabler/icons-react'
 import { useTheme } from "next-themes";

@@ -1,0 +1,61 @@
+---
+title: Find Numbers with Even Number of Digits
+excerpt: How to solve the Find Numbers with Even Number of Digits problem on LeetCode
+category: python
+tags:
+  - python
+  - algorithm
+  - leetcode
+author:
+  name: RSurya99
+  picture: /static/images/logo.png
+date: '2023-04-13'
+---
+
+## Problem
+
+Given an array `nums` of integers, return how many of them contain an even number of digits.
+
+## Example
+
+### Example 1:
+
+```bash
+Input: nums = [12,345,2,6,7896]
+Output: 2
+Explanation: 
+12 contains 2 digits (even number of digits). 
+345 contains 3 digits (odd number of digits). 
+2 contains 1 digit (odd number of digits). 
+6 contains 1 digit (odd number of digits). 
+7896 contains 4 digits (even number of digits). 
+Therefore only 12 and 7896 contain an even number of digits.
+```
+
+### Example 2:
+
+```bash
+Input: nums = [555,901,482,1771]
+Output: 1 
+Explanation: 
+Only 1771 contains an even number of digits.
+```
+
+## Answer
+
+```py
+nums = [12, 345, 2, 6, 7896]
+
+result = []
+for num in nums:
+    length = len(str(num))
+    if length % 2 == 0:
+        result.append(num)
+
+result = len(result)
+print(result)
+```
+
+## Resources
+
+- [LeetCode Problem Link](https://leetcode.com/problems/find-numbers-with-even-number-of-digits)

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
-import Navbar from "~/components/Page/Navbar"
-import Footer from "~/components/Page/Footer"
+import Navbar from "~/components/page/Navbar"
+import Footer from "~/components/page/Footer"
 
 type Props = {
   children: React.ReactNode

@@ -8,7 +8,7 @@ import DefaultLayout from '~/layouts/default'
 
 const about = () => {
   return (
-    <section className='w-full max-w-screen-xl mx-auto py-12 space-y-8'>
+    <section className='w-full h-[65vh] max-w-screen-xl mx-auto py-12 space-y-8'>
       <div className='max-w-5xl space-y-6'>
         <h1 className="text-5xl font-semibold leading-tight">Reach me!</h1>
         <ul className="space-y-3">

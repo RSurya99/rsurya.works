@@ -6,7 +6,7 @@ import { IconLink } from "@tabler/icons-react";
 import { IconChevronRight } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
-import Character from "~/components/Character";
+import Character from "~/components/utils/Character";
 
 export default function Home() {
   return (
