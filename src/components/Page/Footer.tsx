@@ -11,9 +11,6 @@ const Footer = () => {
     path.pop()
     router.push(path.join('/') || '/')
   }
-  useEffect(() => {
-    console.log('router', router.pathname.split('/'))
-  }, [])
 
   const smallWidthRoutes = ['/projects/[id]', '/blog/[id]', '/cheatsheet/[id]', '/wiki/[id]', '/reading-list/[id]']
 
