@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import DefaultLayout from '~/layouts/default'
 
 const PostDetail = () => {
