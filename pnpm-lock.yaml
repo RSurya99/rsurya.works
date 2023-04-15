@@ -6,6 +6,7 @@ specifiers:
   '@headlessui/react': ^1.7.13
   '@tabler/icons-react': ^2.13.1
   '@tailwindcss/typography': ^0.5.9
+  '@types/lodash': ^4.14.194
   '@types/node': 18.15.11
   '@types/react': 18.0.31
   '@types/react-dom': 18.0.11
@@ -35,6 +36,7 @@ specifiers:
 dependencies:
   '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
   '@tabler/icons-react': 2.13.1_react@18.2.0
+  '@types/lodash': 4.14.194
   '@types/node': 18.15.11
   '@types/react': 18.0.31
   '@types/react-dom': 18.0.11
@@ -646,6 +648,10 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: false
+
+  /@types/lodash/4.14.194:
+    resolution: {integrity: sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==}
     dev: false
 
   /@types/mdast/3.0.11:

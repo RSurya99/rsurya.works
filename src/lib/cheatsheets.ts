@@ -83,15 +83,13 @@ export const getAllCheatsheetsMeta = () => {
   const files = fs.readdirSync(rootDirectory)
   const cheatsheets = files
     .map(file => getCheatsheetMeta(file))
-    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+    .sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
   return cheatsheets
 }
 
 export const getMapCheatsheetsMeta = () => {
-  const files = fs.readdirSync(rootDirectory)
-  const cheatsheets = files
-    .map(file => getCheatsheetMeta(file))
-    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+  const cheatsheets = getAllCheatsheetsMeta()
+  const mapCheatsheets = cheatsheets
     .reduce((acc: any, curr: any) => {
       if(acc[curr.category]){
         acc[curr.category].push(curr)
@@ -100,14 +98,12 @@ export const getMapCheatsheetsMeta = () => {
       }
       return acc
     }, {})
-  return cheatsheets
+  return mapCheatsheets
 }
 
 export const getCheatsheetCategories = () => {
-  const files = fs.readdirSync(rootDirectory)
-  const categories = files
-    .map(file => getCheatsheetMeta(file))
-    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+  const cheatsheets = getAllCheatsheetsMeta()
+  const categories = cheatsheets
     .map((el: any) => el.category)
     .filter((el: any, i: any, arr: any) => arr.indexOf(el) === i)
   return categories

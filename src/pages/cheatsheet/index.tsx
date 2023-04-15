@@ -25,7 +25,7 @@ export async function getStaticProps() {
 const CheatsheetIndex = ({ cheatsheets, categories }: any) => {
   const [search, setSearch] = useState('')
   const [searchModal, setSearchModal] = useState(false)
-  const [searchResult, setSearchResult] = useState([])
+  const [searchResult, setSearchResult] = useState<any[]>([])
 
   const handleClickOutside = () => {
     setSearchModal(false)
