@@ -3,6 +3,6 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
-  if(pathname.includes('/blog') || pathname.includes('/projects') || pathname.includes('/wiki') || pathname.includes('/reading-list')) return NextResponse.redirect(new URL('/under-development', req.url))
+  if(pathname.includes('/blog') || pathname.includes('/wiki') || pathname.includes('/reading-list')) return NextResponse.redirect(new URL('/under-development', req.url))
   return NextResponse.next()
 }

@@ -8,18 +8,21 @@ import Image from "next/image";
 import Link from "next/link";
 import Character from "~/components/utils/Character";
 import { getLatestCheatsheetsMeta } from '~/lib/cheatsheets'
+import { getLatestProjectsMeta } from '~/lib/projects'
 
 export async function getStaticProps() {
   const latestCheatsheets = getLatestCheatsheetsMeta(6)
+  const latestProjects = getLatestProjectsMeta(6)
 
   return {
     props: {
-      latestCheatsheets
+      latestProjects,
+      latestCheatsheets,
     }
   }
 }
 
-export default function Home({ latestCheatsheets }: any) {
+export default function Home({ latestProjects, latestCheatsheets }: any) {
   return (
     <div className="space-y-12">
       {/* Landing Section */}
@@ -97,26 +100,19 @@ export default function Home({ latestCheatsheets }: any) {
           <h2 className="text-5xl font-semibold leading-tight">Projects</h2>
           <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">List of projects that I am proud of.</p>
         </div>
-        {true ? 
-        <section className='w-full min-h-[50vh] bg-primary rounded-lg flex flex-col items-center justify-center'>
-          <h1 className="text-5xl font-semibold mb-1.5 text-zinc-50">
-            under development
-          </h1>
-          <p className='text-lg text-zinc-200'>Soon I promise</p>
-        </section>
-        :
         <div className="grid grid-cols-3 gap-8">
-          {[1, 2, 3, 4, 5, 6].map(el => (
-            <Link href={`/projects/${el}`} key={el} className="mb-2 bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
+          {latestProjects.map((project: any) => (
+            <Link href={`/projects/${project.slug}`} key={project.slug} className="mb-2 bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
               <div className="inline-block p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
-                <Image src="/static/images/project/tereby/logo.png" width={32} height={32} alt="Tereby Project" />
+                <Image src={project.logo} width={32} height={32} alt={project.title + ' Project'} />
               </div>
-              <h4 className="text-2xl font-semibold text-white dark:text-primary leading-tight">Tereby</h4>
-              <p className="text-zinc-200 dark:text-primary-300 tracking-wide leading-relaxed">Platform to watch 100+ Television Channel worldwide for free.</p>
+              <h4 className="text-2xl font-semibold text-white dark:text-primary leading-tight">{project.title}</h4>
+              <p className="text-zinc-200 dark:text-primary-300 tracking-wide leading-relaxed">{project.excerpt}</p>
               <div className="pt-6 flex items-center justify-between">
-                <div className="flex space-x-2">
-                  <div className="px-2 py-1 rounded-full bg-white dark:bg-primary text-primary-300 dark:text-zinc-200">VueJS</div>
-                  <div className="px-2 py-1 rounded-full bg-white dark:bg-primary text-primary-300 dark:text-zinc-200">TailwindCSS</div>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag:string) => (
+                    <div key={tag} className="px-2 py-1 rounded-full bg-white dark:bg-primary text-primary-300 dark:text-zinc-200">{tag}</div>
+                  ))}
                 </div>
                 <div className="flex space-x-2 text-white dark:text-primary">
                   <div><IconLink /></div>
@@ -126,7 +122,6 @@ export default function Home({ latestCheatsheets }: any) {
             </Link>
           ))}
         </div>
-        }
         <Link href='/projects' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
           See all my projects
           <IconArrowNarrowRight className="ml-2" />
