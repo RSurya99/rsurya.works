@@ -9,20 +9,23 @@ import Link from "next/link";
 import Character from "~/components/utils/Character";
 import { getLatestCheatsheetsMeta } from '~/lib/cheatsheets'
 import { getLatestProjectsMeta } from '~/lib/projects'
+import { getLatestReadingLists } from '~/lib/readingLists'
 
 export async function getStaticProps() {
   const latestCheatsheets = getLatestCheatsheetsMeta(6)
   const latestProjects = getLatestProjectsMeta(6)
+  const latestReadingLists = getLatestReadingLists(6)
 
   return {
     props: {
       latestProjects,
       latestCheatsheets,
+      latestReadingLists
     }
   }
 }
 
-export default function Home({ latestProjects, latestCheatsheets }: any) {
+export default function Home({ latestProjects, latestCheatsheets, latestReadingLists }: any) {
   return (
     <div className="space-y-12">
       {/* Landing Section */}
@@ -133,28 +136,19 @@ export default function Home({ latestProjects, latestCheatsheets }: any) {
           <h2 className="text-5xl font-semibold leading-tight">Reading List</h2>
           <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">My curated collection of bookmarks for useful resources.</p>
         </div>
-        {true ? 
-        <section className='w-full min-h-[50vh] bg-primary rounded-lg flex flex-col items-center justify-center'>
-          <h1 className="text-5xl font-semibold mb-1.5 text-zinc-50">
-            under development
-          </h1>
-          <p className='text-lg text-zinc-200'>Soon I promise</p>
-        </section>
-        :
         <div className="space-y-6">
-          {Array(5).fill('').map((el, i) => i).map(el => (
-            <div key={el} className="group rounded-lg bg-zinc-300 dark:bg-zinc-700 overflow-hidden cursor-pointer">
+          {latestReadingLists.map((reading: any) => (
+            <a href={reading.link} target='_blank' key={reading.link} className="w-full inline-block group rounded-lg bg-zinc-300 dark:bg-zinc-700 overflow-hidden cursor-pointer">
               <div className="px-4 py-3 flex items-center">
-                <a href="#" className="text-2xl font-semibold group-hover:underline">How to price yourself as a Freelance Developer</a>
+                <a href="#" className="text-2xl font-semibold group-hover:underline">{reading.title}</a>
                 <IconArrowNarrowRight className="ml-3" />
               </div>
               <div className="px-4 py-3 bg-primary dark:bg-white text-zinc-200 dark:text-primary-300">
-                blog.inkdrop.app
+                {reading.domain}
               </div>
-            </div>
+            </a>
           ))}
         </div>
-        }
         <Link href='reading-list' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
           View all bookmarks
           <IconArrowNarrowRight className="ml-2" />
