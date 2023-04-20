@@ -140,7 +140,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
           {latestReadingLists.map((reading: any) => (
             <a href={reading.link} target='_blank' key={reading.link} className="w-full inline-block group rounded-lg bg-zinc-300 dark:bg-zinc-700 overflow-hidden cursor-pointer">
               <div className="px-4 py-3 flex items-center">
-                <a href="#" className="text-2xl font-semibold group-hover:underline">{reading.title}</a>
+                <div className="text-2xl font-semibold group-hover:underline">{reading.title}</div>
                 <IconArrowNarrowRight className="ml-3" />
               </div>
               <div className="px-4 py-3 bg-primary dark:bg-white text-zinc-200 dark:text-primary-300">
