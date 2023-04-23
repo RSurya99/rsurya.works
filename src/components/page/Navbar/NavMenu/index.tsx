@@ -13,7 +13,7 @@ const Menu = () => {
     },
     {
       name: 'Blog',
-      path: '/blog'
+      path: '/posts'
     },
     {
       name: 'Projects',

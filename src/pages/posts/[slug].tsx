@@ -12,7 +12,7 @@ import { getPostBySlug, getPostsSlug } from '~/lib/posts'
 const PostDetail = ({ meta, source }: any) => {
   return (
     <section className='w-full max-w-5xl mx-auto py-12 space-y-8'>
-      <Image src={meta.cover} width={1024} height={728} alt='Post Preview' className='rounded-xl' />
+      <Image src={meta.cover} width={1024} height={728} alt='Post Preview' className='rounded-xl shadow-md' />
         <div className="flex items-center space-x-8 font-medium mb-4">
           <a href="#" className='underline'>#{meta.category}</a>
           <div className="flex items-center">

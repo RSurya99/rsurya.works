@@ -12,7 +12,7 @@ const Footer = () => {
     router.push(path.join('/') || '/')
   }
 
-  const smallWidthRoutes = ['/projects/[id]', '/blog/[id]', '/cheatsheet/[id]', '/wiki/[id]', '/reading-list/[id]']
+  const smallWidthRoutes = ['/projects/[id]', '/posts/[id]', '/cheatsheet/[id]', '/wiki/[id]', '/reading-list/[id]']
 
   const isRoutesInclude = (path: string) => {
     const splittedPath = path.split('/')
@@ -22,7 +22,7 @@ const Footer = () => {
     if(splittedPath.length >= 3 && ['projects'].includes(splittedPath[1])){
       return true
     }
-    if(splittedPath.length >= 3 && ['blog'].includes(splittedPath[1])){
+    if(splittedPath.length >= 3 && ['posts'].includes(splittedPath[1])){
       return true
     }
     return smallWidthRoutes.includes(path)

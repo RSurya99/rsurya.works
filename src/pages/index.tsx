@@ -10,22 +10,26 @@ import Character from "~/components/utils/Character";
 import { getLatestCheatsheetsMeta } from '~/lib/cheatsheets'
 import { getLatestProjectsMeta } from '~/lib/projects'
 import { getLatestReadingLists } from '~/lib/readingLists'
+import { getLatestPostsMeta } from '~/lib/posts'
+import { format } from 'date-fns'
 
 export async function getStaticProps() {
   const latestCheatsheets = getLatestCheatsheetsMeta(6)
   const latestProjects = getLatestProjectsMeta(6)
   const latestReadingLists = getLatestReadingLists(6)
+  const latestPosts = getLatestPostsMeta(2)
 
   return {
     props: {
       latestProjects,
       latestCheatsheets,
-      latestReadingLists
+      latestReadingLists,
+      latestPosts
     }
   }
 }
 
-export default function Home({ latestProjects, latestCheatsheets, latestReadingLists }: any) {
+export default function Home({ latestProjects, latestCheatsheets, latestReadingLists, latestPosts }: any) {
   return (
     <div className="space-y-12">
       {/* Landing Section */}
@@ -67,32 +71,23 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
           <h2 className="text-5xl font-semibold leading-tight">Blog</h2>
           <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">Mostly about web development, technology, and everything in between.</p>
         </div>
-        {true ? 
-        <section className='w-full min-h-[50vh] bg-primary rounded-lg flex flex-col items-center justify-center'>
-          <h1 className="text-5xl font-semibold mb-1.5 text-zinc-50">
-            under development
-          </h1>
-          <p className='text-lg text-zinc-200'>Soon I promise</p>
-        </section>
-        :
         <div className="space-y-6">
-          {[1, 2].map(el => (
-          <div key={el} className="flex hover:bg-zinc-100 hover:dark:bg-zinc-700 transition-colors duration-300 p-6 rounded-lg">
+          {latestPosts.map((post: any) => (
+          <div key={post.slug} className="flex hover:bg-zinc-100 hover:dark:bg-zinc-700 transition-colors duration-300 p-6 rounded-lg">
             <div className="space-y-2">
-              <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">Feb 2020 - 6 min read</p>
-              <h3 className="text-4xl font-semibold">How pnpm make your development faster 🔥</h3>
-              <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200 mr-20">pnpm is an alternative package manager for Node.js which stands for “Performant NPM”. The main purpose of PNPM is to ...</p>
-              <button className="py-2 flex items-center">
+              <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">{format(new Date(post.date), 'MMM dd, yyyy')} - {post.readTime}</p>
+              <h3 className="text-4xl font-semibold">{post.title}</h3>
+              <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200 mr-20">{post.excerpt} ...</p>
+              <Link href={`/posts/${post.slug}`} className="py-2 flex items-center">
                 Read more
                 <IconChevronRight className="ml-2 w-5 h-5" />
-              </button>
+              </Link>
             </div>
-            <Image src='/static/images/blog/post-1.jpg' width={400} height={235} className="rounded-lg" alt="Post 1" />
+            <Image src={post.cover} width={400} height={235} className="rounded-lg shadow" alt={post.title + ' image'} />
           </div>
           ))}
         </div>
-        }
-        <Link href='/blog' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
+        <Link href='/posts' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
           See all my posts
           <IconArrowNarrowRight className="ml-2" />
         </Link>
