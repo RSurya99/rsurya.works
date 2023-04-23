@@ -19,6 +19,12 @@ const Footer = () => {
     if(splittedPath.length >= 3 && ['cheatsheet'].includes(splittedPath[1])){
       return true
     }
+    if(splittedPath.length >= 3 && ['projects'].includes(splittedPath[1])){
+      return true
+    }
+    if(splittedPath.length >= 3 && ['blog'].includes(splittedPath[1])){
+      return true
+    }
     return smallWidthRoutes.includes(path)
   }
 
