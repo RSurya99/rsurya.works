@@ -6,6 +6,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
+import { lowerCase } from 'lodash'
 
 const prettyCodeOptions = {
   theme: 'material-theme-palenight',
@@ -107,6 +108,13 @@ export const getPostCategories = () => {
     .map((el: any) => el.category)
     .filter((el: any, i: any, arr: any) => arr.indexOf(el) === i)
   return categories
+}
+
+export const getPostsByCategory = (category: string) => {
+  const posts = getAllPostsMeta()
+  console.log('category getPost', category)
+  const postsByCategory = posts.filter((el: any) => lowerCase(el.category) === lowerCase(category))
+  return postsByCategory
 }
 
 export const getPostsSlug = () => {

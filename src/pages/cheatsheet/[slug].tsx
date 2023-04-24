@@ -6,6 +6,7 @@ import { IconCalendar } from '@tabler/icons-react'
 import { IconCalendarEvent } from '@tabler/icons-react'
 import { IconCalendarDue } from '@tabler/icons-react'
 import { IconClockHour3 } from '@tabler/icons-react'
+import { format } from 'date-fns'
 
 const CheatsheetDetail = ({ meta, source }: any) => {
   return (
@@ -14,7 +15,7 @@ const CheatsheetDetail = ({ meta, source }: any) => {
         <a href="#">#{meta.category}</a>
         <span className="flex items-center">
           <IconCalendarDue className='mr-1.5' />
-          {meta.date}
+          {format(new Date(meta.date), 'MMM dd, yyyy')}
         </span>
         <span className="flex items-center">
           <IconClockHour3 className='mr-1.5' />

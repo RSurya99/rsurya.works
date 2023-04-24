@@ -8,6 +8,7 @@ import React from 'react'
 import { MDXRemote } from 'next-mdx-remote'
 import MDXComponents from '~/components/mdx/MDXComponents'
 import { getPostBySlug, getPostsSlug } from '~/lib/posts'
+import { format } from 'date-fns'
 
 const PostDetail = ({ meta, source }: any) => {
   return (
@@ -17,7 +18,7 @@ const PostDetail = ({ meta, source }: any) => {
           <a href="#" className='underline'>#{meta.category}</a>
           <div className="flex items-center">
             <IconCalendar className='mr-1.5' />
-            {meta.date}
+            {format(new Date(meta.date), 'MMM dd, yyyy')}
           </div>
           <div className="flex items-center">
             <IconClockHour3 className='mr-1.5' />

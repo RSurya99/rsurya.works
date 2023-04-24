@@ -8,8 +8,9 @@ const Footer = () => {
   // function to go back to root 
   const goBack = () => {
     const path = router.pathname.split('/')
-    path.pop()
-    router.push(path.join('/') || '/')
+    // path.pop()
+    // router.push(path.join('/') || '/')
+    router.back()
   }
 
   const smallWidthRoutes = ['/projects/[id]', '/posts/[id]', '/cheatsheet/[id]', '/wiki/[id]', '/reading-list/[id]']
@@ -22,7 +23,11 @@ const Footer = () => {
     if(splittedPath.length >= 3 && ['projects'].includes(splittedPath[1])){
       return true
     }
+    console.log('splittedPath', splittedPath)
     if(splittedPath.length >= 3 && ['posts'].includes(splittedPath[1])){
+      if(router.query?.category){
+        return false
+      }
       return true
     }
     return smallWidthRoutes.includes(path)

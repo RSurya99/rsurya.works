@@ -6,6 +6,7 @@ import { IconPointFilled } from '@tabler/icons-react'
 import { IconArrowNarrowRight } from '@tabler/icons-react'
 import { getLatestPostsMeta, getMapPostsMeta, getPostCategories } from '~/lib/posts'
 import { format } from 'date-fns'
+import { kebabCase } from 'lodash'
 
 export async function getStaticProps() {
   const posts = getMapPostsMeta()
@@ -61,7 +62,7 @@ const BlogIndex = ({ posts, categories, latestPosts }: any) => {
         </div>
       </section>
       {categories.map((category: any) => (
-      <section key={category} id="self-development" className='space-y-6'>
+      <section key={category} className='space-y-6'>
         <h2 className='text-4xl font-semibold'>{category}</h2>
         <hr className='border border-primary/25' />
         <div className="grid grid-cols-3 gap-x-10">
@@ -80,7 +81,7 @@ const BlogIndex = ({ posts, categories, latestPosts }: any) => {
           ))}
         </div>
         <div className="w-full flex justify-end">
-          <Link href={`/posts/categories/${category}`} className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
+          <Link href={`/posts/categories/${kebabCase(category)}`} className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
             More posts
             <IconArrowNarrowRight className="ml-2" />
           </Link>
