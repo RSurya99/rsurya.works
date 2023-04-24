@@ -15,7 +15,7 @@ const PostCategoryDetail = ({ category, posts }: any) => {
       <div className="grid grid-cols-3 gap-x-10">
         {posts.map((post: any) => (
         <Link href={`/posts/${post.slug}`} key={post.slug} className="space-y-3">
-          <Image src={post.cover} width={400} height={235} alt='Post Image' className='rounded-lg shadow' />
+          <Image src={post.cover} width={400} height={235} alt='Post Image' className='rounded-lg' />
           <div className="space-y-2">
             <h3 className='text-3xl font-semibold'>{post.title}</h3>
             <div className="flex items-center gap-x-3 text-primary-300 dark:text-zinc-200">

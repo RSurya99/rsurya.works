@@ -83,7 +83,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
                 <IconChevronRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
-            <Image src={post.cover} width={400} height={235} className="rounded-lg shadow" alt={post.title + ' image'} />
+            <Image src={post.cover} width={400} height={235} className="rounded-lg" alt={post.title + ' image'} />
           </div>
           ))}
         </div>
