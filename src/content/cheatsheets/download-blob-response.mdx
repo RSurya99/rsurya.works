@@ -1,0 +1,29 @@
+---
+title: How To Download Blob From Fetch Response
+excerpt: How to download blob from fetch response
+category: javascript
+tags:
+  - javascript
+  - blob
+  - axios
+author:
+  name: RSurya99
+  picture: /static/images/logo.png
+date: '2023-04-24'
+---
+
+After you call the download API, it will return you a blob object. You can use this code to download the blob object.
+
+```javascript
+async function onClickDownload(){
+  const response = await fetchApi()
+  const FILE = window.URL.createObjectURL(new Blob([res.data]))
+  const docUrl = document.createElement('a')
+  docUrl.href = FILE
+  docUrl.setAttribute('download', doc.file_name)
+  document.body.appendChild(docUrl)
+  docUrl.click()
+}
+```
+
+When you call the function, it will call the API and if the response is 200, it will automatically turn blob into downloadable file and download it.

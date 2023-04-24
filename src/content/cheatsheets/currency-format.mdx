@@ -1,0 +1,18 @@
+---
+title: How To Format Number To Currency
+excerpt: How to format number to currency
+category: javascript
+tags:
+  - javascript
+  - currency format
+author:
+  name: RSurya99
+  picture: /static/images/logo.png
+date: '2023-04-24'
+---
+
+You can easily format number to the currency of your country with `Intl.NumberFormat`, here's the example :
+
+```javascript
+new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(number)
+```

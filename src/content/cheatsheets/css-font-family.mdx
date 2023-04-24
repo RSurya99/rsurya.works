@@ -1,0 +1,52 @@
+---
+title: How To Apply CSS Font Family
+excerpt: How To Apply CSS Font Family
+category: CSS
+tags:
+  - CSS
+  - font
+author:
+  name: RSurya99
+  picture: /static/images/logo.png
+date: '2023-04-24'
+---
+
+Applying CSS Font Family sometimes can make me strugling to find the right way, I always forgot the syntax and the way to apply it. So, I decided to write this article to help me remember the syntax and the way to apply it.
+
+```css
+/* Roboto Fonts */
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Thin.ttf') format('ttf');
+  font-weight: 200;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Light.ttf') format('ttf');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Regular.ttf') format('ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Medium.ttf') format('ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Bold.ttf') format('ttf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Black.ttf') format('ttf');
+  font-weight: 800;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+```
