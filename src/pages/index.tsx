@@ -16,7 +16,7 @@ import { format } from 'date-fns'
 export async function getStaticProps() {
   const latestCheatsheets = getLatestCheatsheetsMeta(6)
   const latestProjects = getLatestProjectsMeta(6)
-  const latestReadingLists = getLatestReadingLists(6)
+  const latestReadingLists = getLatestReadingLists(5)
   const latestPosts = getLatestPostsMeta(2)
 
   return {
