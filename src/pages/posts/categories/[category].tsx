@@ -34,8 +34,6 @@ const PostCategoryDetail = ({ category, posts }: any) => {
 export async function getStaticProps({ params }: any) {
   const { category } = params
   const categoryPost = startCase(toLower(category.split('-').join(' ')))
-  console.log('category', category)
-  console.log('categoryPost', categoryPost)
   const posts = await getPostsByCategory(categoryPost)
   return {
     props: {
@@ -47,9 +45,7 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   const categories = getPostCategories()
-  console.log('categories', categories)
   const paths = categories.map((category: any) => ({ params: { category: kebabCase(category) } }))
-  console.log('paths', paths)
   return {
     paths,
     fallback: false

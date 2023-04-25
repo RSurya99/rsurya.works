@@ -23,7 +23,6 @@ const Footer = () => {
     if(splittedPath.length >= 3 && ['projects'].includes(splittedPath[1])){
       return true
     }
-    console.log('splittedPath', splittedPath)
     if(splittedPath.length >= 3 && ['posts'].includes(splittedPath[1])){
       if(router.query?.category){
         return false

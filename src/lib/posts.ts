@@ -112,7 +112,6 @@ export const getPostCategories = () => {
 
 export const getPostsByCategory = (category: string) => {
   const posts = getAllPostsMeta()
-  console.log('category getPost', category)
   const postsByCategory = posts.filter((el: any) => lowerCase(el.category) === lowerCase(category))
   return postsByCategory
 }
