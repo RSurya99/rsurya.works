@@ -12,6 +12,7 @@ import { getLatestProjectsMeta } from '~/lib/projects'
 import { getLatestReadingLists } from '~/lib/readingLists'
 import { getLatestPostsMeta } from '~/lib/posts'
 import { format } from 'date-fns'
+import { useEffect } from 'react';
 
 export async function getStaticProps() {
   const latestCheatsheets = getLatestCheatsheetsMeta(6)
@@ -30,6 +31,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ latestProjects, latestCheatsheets, latestReadingLists, latestPosts }: any) {
+
   return (
     <div className="space-y-12">
       {/* Landing Section */}
