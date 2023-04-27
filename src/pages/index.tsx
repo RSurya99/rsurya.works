@@ -80,7 +80,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
               <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">{format(new Date(post.date), 'MMM dd, yyyy')} - {post.readTime}</p>
               <h3 className="text-4xl font-semibold">{post.title}</h3>
               <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200 mr-20">{post.excerpt} ...</p>
-              <Link href={`/posts/${post.slug}`} className="py-2 flex items-center">
+              <Link href={`/posts/${post.slug}`} className="py-2 flex items-center w-fit">
                 Read more
                 <IconChevronRight className="ml-2 w-5 h-5" />
               </Link>

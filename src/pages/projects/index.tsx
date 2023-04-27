@@ -83,12 +83,6 @@ const ProjectsIndex = ({ latestProjects, projects, categories }: any) => {
               </Link>
             ))}
           </div>
-          <div className="w-full flex justify-end">
-            <button className="p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
-              View all website projects
-              <IconArrowNarrowRight className="ml-2" />
-            </button>
-          </div>
         </div>
         ))}
       </section>
