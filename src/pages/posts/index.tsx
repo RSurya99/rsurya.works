@@ -31,7 +31,7 @@ const BlogIndex = ({ posts, categories, latestPosts }: any) => {
       <section id="latest" className='grid grid-cols-2 gap-x-8'>
         <div className='w-full'>
           <Link href={`/posts/${firstLatestPost.slug}`} className="flex flex-col gap-y-5">
-            <Image src={firstLatestPost.cover} width={700} height={411} alt='Post Image' className='rounded-lg' />
+            <Image src={firstLatestPost.cover} width={700} height={411} alt='Post Image' className='rounded-lg aspect-[16/10] object-cover object-center' />
             <div className="flex items-center gap-x-3">
               <span>{format(new Date(firstLatestPost.date), 'MMM dd, yyyy')}</span>
               <IconPointFilled className='w-4 h-4' />
@@ -45,7 +45,7 @@ const BlogIndex = ({ posts, categories, latestPosts }: any) => {
           <h3 className='text-2xl font-semibold'>Recent Posts</h3>
           {restLatestPosts.length ? restLatestPosts.map((post: any) => (
             <Link href={`/posts/${post.slug}`} key={post.slug} className="flex gap-x-5">
-              <Image src={post.cover} width={250} height={146} alt='Post Image' className='rounded-lg' />
+              <Image src={post.cover} width={250} height={146} alt='Post Image' className='rounded-lg aspect-[16/10] object-cover object-center' />
               <div className="space-y-1.5">
                 <h3 className='text-2xl font-semibold'>{post.title}</h3>
                 <span className='text-sm'>IN {post.category.toUpperCase()}</span>
@@ -68,7 +68,7 @@ const BlogIndex = ({ posts, categories, latestPosts }: any) => {
         <div className="grid grid-cols-3 gap-x-10">
           {posts[category].map((post: any) => (
           <Link href={`/posts/${post.slug}`} key={post.slug} className="space-y-3">
-            <Image src={post.cover} width={400} height={235} alt='Post Image' className='rounded-lg' />
+            <Image src={post.cover} width={400} height={235} alt='Post Image' className='rounded-lg aspect-[16/10] object-cover object-center' />
             <div className="space-y-2">
               <h3 className='text-3xl font-semibold'>{post.title}</h3>
               <div className="flex items-center gap-x-3 text-primary-300 dark:text-zinc-200">
