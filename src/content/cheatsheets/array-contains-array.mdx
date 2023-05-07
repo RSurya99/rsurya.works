@@ -1,0 +1,22 @@
+---
+title: How To Check if Array Contains Any Element of Another Array
+excerpt: How to Check if Array Contains Any Element of Another Array
+category: javascript
+tags:
+  - javascript
+  - data structure
+author:
+  name: RSurya99
+  picture: /static/images/logo.png
+date: '2023-05-08'
+---
+
+Usually I use this to check between logged in user roles and roles should be able to access the page, yes their basically two array, and I want to check if the logged in user roles contains any element of roles should be able to access the page.
+
+```javascript
+const arr1 = ['admin', 'superadmin', 'teacher']
+const arr2 = ['teacher', 'staff']
+const found = arr1.some(r=> arr2.includes(r))
+```
+
+That's it, it will return true if arr1 contains any element of arr2, and false if not.

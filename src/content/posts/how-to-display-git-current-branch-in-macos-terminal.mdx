@@ -1,0 +1,48 @@
+---
+title: How To Display GIT Current Branch in MacOS Terminal
+cover: /static/images/posts/how-to-display-git-current-branch-in-macos-terminal/cover.png
+excerpt: Step by step tutorial how to display git current branch in macos terminal
+category: Programming
+tags:
+  - git
+  - terminal
+  - macos
+author:
+  name: RSurya99
+  picture: /static/images/logo.png
+date: '2023-05-08'
+---
+
+# How To Display GIT Current Branch in MacOS Terminal
+
+When you are working with git, you will need to know what branch you are currently working on. By default, git bash has this feature, but if you are working with macos terminal even after you have git installed, the active branch will not showed next to the directory location.
+
+By following this simple tutorial you will understand how to display git current branch in macos terminal.
+
+- Go to your home directory in terminal
+```bash
+cd ~
+```
+
+- Open .zshrc file using nano/vim
+```bash
+vim .zshrc
+```
+
+- Add this line to the end of the file
+```bash
+parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+}
+COLOR_DEF='%f'
+COLOR_USR='%F{243}'
+COLOR_DIR='%F{197}'
+COLOR_GIT='%F{39}'
+NEWLINE=$'\n'
+setopt PROMPT_SUBST
+export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
+```
+
+- Save the file and restart your terminal
+
+Note : if you don't like the color, you can change the variable value with the colour codes as defined here: [bash color and formatting](https://misc.flogisoft.com/bash/tip_colors_and_formatting)

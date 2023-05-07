@@ -1,0 +1,48 @@
+---
+title: How To Apply CSS Custom Scrollbar
+excerpt: How To Apply CSS Custom Scrollbar
+category: CSS
+tags:
+  - CSS
+  - scrollbar
+author:
+  name: RSurya99
+  picture: /static/images/logo.png
+date: '2023-05-08'
+---
+
+Sometimes you don't want to use the default design of scrollbar, here's how you can customize it.
+
+```css
+::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar-track {
+  background: theme('colors.gray.100');
+  border-left: 1px solid theme('colors.gray.200');
+}
+::-webkit-scrollbar-thumb {
+  border: 4px solid theme('colors.gray.100');
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: theme('colors.slate.300');
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: theme('colors.slate.400');
+}
+html.dark {
+  ::-webkit-scrollbar-track {
+    background: theme('colors.slate.800');
+    border-left: 1px solid theme('colors.slate.700');
+  }
+  ::-webkit-scrollbar-thumb {
+    border-color: theme('colors.slate.800');
+    background-color: theme('colors.slate.500');
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: theme('colors.slate.400');
+  }
+}
+```
+
+In this example I use Tailwind CSS for the color, but you can use the same logic for any CSS framework or even vanilla CSS.

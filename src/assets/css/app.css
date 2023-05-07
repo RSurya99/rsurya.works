@@ -1,2 +1,7 @@
 @import "./fonts.css";
 @import "./tailwind.css";
+
+input[type="checkbox"] {
+  @apply h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary mt-0 mr-1 mb-1;
+}
+

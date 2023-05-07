@@ -1,0 +1,23 @@
+---
+title: How To Convert Object to Array
+excerpt: How to Convert Object to Array
+category: javascript
+tags:
+  - javascript
+  - data structure
+author:
+  name: RSurya99
+  picture: /static/images/logo.png
+date: '2023-05-08'
+---
+
+Sometimes I do forgot about how to convert object into array, here's the example
+
+```javascript
+const obj = { 'key': 'value', 'key2': 'value2' }
+var result = Object.keys(obj).map((key) => [key, obj[key]]);
+// result
+// [["key", "value"], ["key2", "value2"]
+```
+
+After you know the result will be like that, you know what you should do next right? :D
