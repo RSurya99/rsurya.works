@@ -6,6 +6,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
+import remarkGfm from 'remark-gfm'
 
 const prettyCodeOptions = {
   theme: 'material-theme-palenight',
@@ -38,7 +39,8 @@ export const getProjectBySlug = async (slug: any) => {
         // [rehypeHighlight],
         [rehypeAutolinkHeadings, { behavior: 'wrap' }],
         [rehypePrettyCode, prettyCodeOptions]
-      ]
+      ],
+      remarkPlugins: [remarkGfm]
     }
   })
 
