@@ -110,11 +110,11 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
               <p className="text-zinc-200 dark:text-primary-300 tracking-wide leading-relaxed">{project.excerpt}</p>
               <div className="pt-6 flex items-center justify-between">
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag:string) => (
+                  {project.tags && project.tags.map((tag:string) => (
                     <div key={tag} className="px-2 py-1 rounded-full bg-white dark:bg-primary text-primary-300 dark:text-zinc-200">{tag}</div>
                   ))}
                 </div>
-                <div className="flex space-x-2 text-white dark:text-primary">
+                <div className="mb-1 flex space-x-2 text-white dark:text-primary self-end">
                   <div><IconLink /></div>
                   <div><IconBrandGithub /></div>
                 </div>
