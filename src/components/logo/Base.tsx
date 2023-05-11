@@ -1,0 +1,16 @@
+import React from 'react'
+import ReactLogo from './ReactLogo'
+import HTMLLogo from './HtmlLogo'
+import FigmaLogo from './FigmaLogo'
+import TailwindCSSLogo from './TailwindCSSLogo'
+import GolangLogo from './GolangLogo'
+
+const BaseLogo = ({ componentName, ...attributes }: any) => {
+  const componentsMap: any = { React: ReactLogo, HTML: HTMLLogo, Figma: FigmaLogo, TailwindCSS: TailwindCSSLogo, Golang: GolangLogo }
+  const ComponentName: any = componentsMap[componentName] || ReactLogo
+  return (
+    <ComponentName {...attributes} />
+  )
+}
+
+export default BaseLogo

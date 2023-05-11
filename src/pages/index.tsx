@@ -13,6 +13,7 @@ import { getLatestReadingLists } from '~/lib/readingLists'
 import { getLatestPostsMeta } from '~/lib/posts'
 import { format } from 'date-fns'
 import { useEffect } from 'react';
+import BaseLogo from '~/components/logo/Base';
 
 export async function getStaticProps() {
   const latestCheatsheets = getLatestCheatsheetsMeta(6)
@@ -111,7 +112,9 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
               <div className="pt-6 flex items-center justify-between">
                 <div className="flex flex-wrap gap-2">
                   {project.tags && project.tags.map((tag:string) => (
-                    <div key={tag} className="px-2 py-1 rounded-full bg-white dark:bg-primary text-primary-300 dark:text-zinc-200">{tag}</div>
+                    <div key={tag} className="p-1.5 rounded-full bg-white dark:bg-primary text-primary-300 dark:text-zinc-200">
+                      <BaseLogo componentName={tag} className='w-6 h-6' />
+                    </div>
                   ))}
                 </div>
                 <div className="mb-1 flex space-x-2 text-white dark:text-primary self-end">
