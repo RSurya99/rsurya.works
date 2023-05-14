@@ -86,7 +86,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
                 <IconChevronRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
-            <Image src={post.cover} width={400} height={235} className="w-full lg:w-fit rounded-lg aspect-[16/10] object-cover object-center" alt={post.title + ' image'} />
+            <Image src={post.cover} width={400} height={235} className="w-full lg:w-[400px] rounded-lg aspect-[16/10] object-cover object-center" alt={post.title + ' image'} />
           </div>
           ))}
         </div>
@@ -101,10 +101,10 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
           <h2 className="text-4xl sm:text-5xl font-semibold leading-tight">Projects</h2>
           <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">List of projects that I am proud of.</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-8">
           {latestProjects.map((project: any) => (
-            <Link href={`/projects/${project.slug}`} key={project.slug} className="mb-2 bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
-              <div className="inline-block p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
+            <Link href={`/projects/${project.slug}`} key={project.slug} className="mb-2 flex flex-col justify-between  bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
+              <div className="inline-block w-fit p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
                 <Image src={project.logo} width={32} height={32} alt={project.title + ' Project'} />
               </div>
               <h4 className="text-2xl font-semibold text-white dark:text-primary leading-tight">{project.title}</h4>

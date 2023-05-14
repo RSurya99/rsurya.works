@@ -30,17 +30,17 @@ const ProjectsIndex = ({ latestProjects, projects, categories }: any) => {
       <Head>
         <title>Projects | RSurya99</title>
       </Head>
-      <section className='w-full max-w-screen-xl mx-auto py-12 space-y-8'>
+      <section className='w-full max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
         <div className="space-y-1.5">
-          <h1 className="text-5xl font-semibold leading-tight">Projects</h1>
-          <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">List of projects that I am proud of.</p>
+          <h1 className="text-4xl sm:text-5xl font-semibold leading-tight">Projects</h1>
+          <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">List of projects that I am proud of.</p>
         </div>
         <div className="space-y-6">
-          <h2 className="text-4xl font-semibold leading-tight">Latest</h2>
-          <div className="grid grid-cols-3 gap-8">
+          <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">Latest</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-8">
             {latestProjects.map((project: any) => (
-              <Link href={`/projects/${project.slug}`} key={project.slug} className="mb-2 bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
-                <div className="inline-block p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
+              <Link href={`/projects/${project.slug}`} key={project.slug} className="mb-2 flex flex-col justify-between bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
+                <div className="inline-block w-fit p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
                   <Image src={project.logo} width={32} height={32} alt={project.title + ' Project'} />
                 </div>
                 <h4 className="text-2xl font-semibold text-white dark:text-primary leading-tight">{project.title}</h4>
@@ -64,18 +64,16 @@ const ProjectsIndex = ({ latestProjects, projects, categories }: any) => {
         </div>
         {categories.map((el: string) => (
         <div key={uuid()} className="space-y-6">
-          <h2 className="text-4xl font-semibold leading-tight">{el}</h2>
-          <div className="grid grid-cols-3 gap-8">
+          <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">{el}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-8">
             {projects[el].map((project: any) => (
-              <Link href={`/projects/${project.slug}`} key={uuid()} className="mb-2 bg-primary dark:bg-zinc-200 p-6 flex flex-col justify-between rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer aspect-[16/10]">
-                <div className="w-fit inline-block p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
+              <Link href={`/projects/${project.slug}`} key={project.slug} className="mb-2 flex flex-col justify-between  bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
+                <div className="inline-block w-fit p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
                   <Image src={project.logo} width={32} height={32} alt={project.title + ' Project'} />
                 </div>
-                <div className='space-y-2 mb-4'>
-                  <h4 className="text-2xl font-semibold text-white dark:text-primary leading-tight">{project.title}</h4>
-                  <p className="text-zinc-200 dark:text-primary-300 tracking-wide leading-relaxed">{project.excerpt}</p>
-                </div>
-                <div className="flex items-center justify-between">
+                <h4 className="text-2xl font-semibold text-white dark:text-primary leading-tight">{project.title}</h4>
+                <p className="text-zinc-200 dark:text-primary-300 tracking-wide leading-relaxed">{project.excerpt}</p>
+                <div className="pt-6 flex items-center justify-between">
                   <div className="flex flex-wrap gap-2">
                     {project.tags && project.tags.map((tag:string) => (
                       <div key={tag} className="p-1.5 rounded-full bg-white dark:bg-primary text-primary-300 dark:text-zinc-200">
