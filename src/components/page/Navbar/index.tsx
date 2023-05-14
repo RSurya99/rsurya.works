@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
 import Logo from '~/components/utils/Logo'
 import NavMenu from './NavMenu'
 import { IconBrandGithub, IconBrandTwitter, IconBrandLinkedin, IconMoon } from '@tabler/icons-react'
 import { useTheme } from "next-themes";
+import { IconMenu2 } from '@tabler/icons-react'
+import { SidebarContext } from '~/contexts/SidebarContext'
 
 const Navbar = () => {
+  const { setOpen } = useContext(SidebarContext)
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
   
   return (
-    <header className='sticky top-0 py-6 backdrop-filter backdrop-blur-md bg-white/80 dark:bg-primary/80 z-50 transition duration-300'>
+    <header className='sticky top-0 px-4 py-6 backdrop-filter backdrop-blur-md bg-white/80 dark:bg-primary/80 z-50 transition duration-300'>
       <nav className='max-w-screen-xl mx-auto flex items-center justify-between'>
-        <div className="flex items-center space-x-12">
+        <div className="flex items-center gap-x-4 lg:gap-x-12">
+          <IconMenu2 onClick={() => setOpen((open) => !open)} className='block lg:hidden' />
           <Link href="/" className='flex items-center space-x-2'>
             <Logo className='w-10 h-10 rounded' />
             <span className='text-2xl font-medium'>RSURYA99.</span>

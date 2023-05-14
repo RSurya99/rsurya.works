@@ -36,16 +36,16 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
   return (
     <div className="space-y-12">
       {/* Landing Section */}
-      <section className='w-full max-w-screen-xl mx-auto grid grid-cols-2 py-12'>
-        <div className="flex flex-col justify-center">
+      <section className='w-full max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 py-12 px-4 overflow-hidden'>
+        <div className="flex flex-col justify-center text-center lg:text-left">
           <span className="text-xl font-medium mb-4">Hi, I’m Rafli ✋</span>
           <h1 className="text-5xl font-semibold leading-tight mb-4 text-primary dark:text-zinc-50">Front End Engineer based in West Java, Indonesia</h1>
           <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200 mb-7">I’m a self taught engineer with high enthusiast of open-source. Here you can find all of my writing, projects, and even a cheatsheet.</p>
           <div>
-            <Link href='/contact' className="px-12 py-4 bg-primary dark:bg-white hover:bg-zinc-700 hover:dark:bg-zinc-200 text-white dark:text-primary font-medium rounded-lg transition-colors duration-300">Contact Me</Link>
+            <Link href='/contact' className="px-12 py-4 inline-block w-full lg:w-fit bg-primary dark:bg-white hover:bg-zinc-700 hover:dark:bg-zinc-200 text-white dark:text-primary font-medium rounded-lg transition-colors duration-300">Contact Me</Link>
           </div>
         </div>
-        <div className="relative ml-36">
+        <div className="hidden lg:block relative ml-36">
           <Character />
           <div className="absolute top-16 -left-8">
             <svg width="67" height="67" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary dark:text-zinc-200">
@@ -69,7 +69,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
         </div>
       </section>
       {/* Blog Section */}
-      <section className='w-full max-w-screen-xl mx-auto py-12 space-y-8'>
+      <section className='w-full max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
         <div className="space-y-1.5">
           <h2 className="text-5xl font-semibold leading-tight">Blog</h2>
           <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">Mostly about web development, technology, and everything in between.</p>
@@ -96,7 +96,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
         </Link>
       </section>
       {/* Projects Section */}
-      <section className='w-full max-w-screen-xl mx-auto py-12 space-y-8'>
+      <section className='w-full max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
         <div className="space-y-1.5">
           <h2 className="text-5xl font-semibold leading-tight">Projects</h2>
           <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">List of projects that I am proud of.</p>
@@ -131,7 +131,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
         </Link>
       </section>
       {/* Reading List Section */}
-      <section className='w-full max-w-screen-xl mx-auto py-12 space-y-8'>
+      <section className='w-full max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
         <div className="space-y-1.5">
           <h2 className="text-5xl font-semibold leading-tight">Reading List</h2>
           <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">My curated collection of bookmarks for useful resources.</p>
@@ -155,7 +155,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
         </Link>
       </section>
       {/* Cheatsheet Section */}
-      <section className='w-full max-w-screen-xl mx-auto py-12 space-y-8'>
+      <section className='w-full max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
         <div className="space-y-1.5">
           <h2 className="text-5xl font-semibold leading-tight">Cheatsheet</h2>
           <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">I’ve learned a lot of things, but I have forgotten a lot.</p>

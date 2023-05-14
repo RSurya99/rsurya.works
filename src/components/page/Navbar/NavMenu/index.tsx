@@ -25,7 +25,7 @@ const Menu = () => {
     }
   ]
   return (
-    <ul className='flex items-center space-x-8'>
+    <ul className='hidden lg:flex items-center space-x-8'>
       {menuItems.map((item) => (
         <MenuItem name={item.name} path={item.path} key={item.path} />
       ))}
