@@ -14,7 +14,7 @@ const ProjectDetail = ({ meta, source }: any) => {
   return (
     <section className='w-full max-w-5xl mx-auto px-4 py-12 space-y-8'>
       <Image src={meta.cover} width={1024} height={728} alt={meta.title + ' Post'}  className='rounded-xl' />
-        <div className="flex flex-wrap items-center text-base sm:text-lg gap-y-4 gap-x-4 md:gap-x-8 font-medium mb-4">
+        <div className="flex flex-wrap items-center text-base sm:text-lg gap-4 md:gap-8 font-medium mb-4">
           <a href="#" className='underline'>#{meta.category}</a>
           <div className="flex items-center">
             <IconCalendar className='mr-1.5' />
