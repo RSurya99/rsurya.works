@@ -6,6 +6,7 @@ import DefaultLayout from '~/layouts/default'
 import { useEffect } from 'react'
 import { analytics } from '~/utils/firebase'
 import { useRouter } from 'next/router'
+import { SidebarProvider } from '~/contexts/SidebarContext'
 
 type Page = {
   getLayout?: (page: React.ReactElement) => React.ReactNode,
@@ -54,9 +55,11 @@ export default function App({ Component, pageProps }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider attribute="class">
-        <DefaultLayout>
-          <Component {...pageProps} />
-        </DefaultLayout>
+        <SidebarProvider>
+          <DefaultLayout>
+            <Component {...pageProps} />
+          </DefaultLayout>
+        </SidebarProvider>
       </ThemeProvider>
     </>
   )
