@@ -52,18 +52,18 @@ const CheatsheetIndex = ({ cheatsheets, categories }: any) => {
   }
 
   return (
-    <section className='w-full min-h-[65vh] max-w-screen-xl mx-auto py-12 space-y-8'>
-      <div className="flex items-center justify-between">
+    <section className='w-full min-h-[65vh] max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-y-4 lg:gap-y-0">
         <div className="space-y-1.5">
-          <h1 className="text-5xl font-semibold leading-tight">Cheatsheet</h1>
-          <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">I&apos;ve learned a lot of things, but I have forgotten a lot.</p>
+          <h1 className="text-4xl sm:text-5xl font-semibold leading-tight">Cheatsheet</h1>
+          <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">I&apos;ve learned a lot of things, but I have forgotten a lot.</p>
         </div>
-        <div className="relative w-full max-w-lg">
+        <div className="relative w-full lg:max-w-md xl:max-w-lg">
           <div className='relative w-full'>
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5">
               <IconSearch />
             </div>
-            <input type="text" ref={ref} onFocus={handleSearchFocus} value={search} onChange={(e) => setSearch(e.target.value)} className='w-full pl-14 pr-5 py-3 text-lg border border-primary rounded-lg focus:outline-none' placeholder='Find Cheatsheet' />
+            <input type="text" ref={ref} onFocus={handleSearchFocus} value={search} onChange={(e) => setSearch(e.target.value)} className='w-full pl-14 pr-5 py-3 text-base sm:text-lg border border-primary rounded-lg focus:outline-none' placeholder='Find Cheatsheet' />
           </div>
           {searchModal && (
           <div className="absolute top-14 left-0 bg-white border border-primary w-full rounded-lg overflow-hidden divide-y divide-zinc-300">
@@ -87,7 +87,7 @@ const CheatsheetIndex = ({ cheatsheets, categories }: any) => {
         {categories.map((el: string) => (
         <div key={el}>
           <a href={`#${el}`} className="inline-block p-2.5 bg-primary dark:bg-zinc-200 text-white dark:text-primary rounded-tr-lg rounded-tl-lg">~/{el}</a>
-          <div className="border border-primary dark:border-zinc-200 grid grid-cols-3 gap-x-6 gap-y-1 p-2">
+          <div className="border border-primary dark:border-zinc-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1 p-2">
             {cheatsheets[el].map((cheatsheet: any) => (
               <Link key={cheatsheet.slug} href={`/cheatsheet/${cheatsheet.slug}`} className="px-3 py-2 flex items-center hover:bg-zinc-100 hover:dark:bg-zinc-700 cursor-pointer">
                 <IconFile className="mr-2" />

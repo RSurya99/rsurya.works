@@ -10,8 +10,8 @@ import { format } from 'date-fns'
 
 const CheatsheetDetail = ({ meta, source }: any) => {
   return (
-    <div className='max-w-5xl mx-auto py-12 space-y-8'>
-      <div className="flex items-center space-x-8 text-lg font-medium">
+    <div className='max-w-5xl mx-auto px-4 py-12 space-y-8'>
+      <div className="flex items-center space-x-8 text-base sm:text-lg font-medium">
         <a href="#">#{meta.category}</a>
         <span className="flex items-center">
           <IconCalendarDue className='mr-1.5' />
@@ -22,8 +22,8 @@ const CheatsheetDetail = ({ meta, source }: any) => {
           {meta.readTime}
         </span>
       </div>
-      <h1 className='text-5xl font-semibold leading-tight'>{meta.title}</h1>
-      <div className="prose prose-lg dark:prose-invert">
+      <h1 className='text-4xl sm:text-5xl font-semibold leading-tight'>{meta.title}</h1>
+      <div className="prose sm:prose-lg dark:prose-invert">
         <MDXRemote {...source} components={MDXComponents} />
       </div>
     </div>

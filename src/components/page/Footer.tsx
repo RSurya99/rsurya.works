@@ -33,7 +33,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="max-w-screen-xl mx-auto pb-6 space-y-4 sm:space-y-6 text-sm sm:text-base">
+    <footer className="max-w-screen-xl mx-auto pb-4 sm:pb-6 space-y-4 sm:space-y-6 text-sm sm:text-base">
       {router.pathname !== '/' && (
         <div className={`w-full mx-auto${isRoutesInclude(router.pathname) ? ' max-w-5xl' : ''}`}>
           <button onClick={goBack} className='px-4 flex items-center font-medium text-primary-300 dark:text-zinc-200 hover:text-primary hover:dark:text-zinc-50 hover:underline transition-colors duration-300'>
