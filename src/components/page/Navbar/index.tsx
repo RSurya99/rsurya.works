@@ -23,7 +23,7 @@ const Navbar = () => {
           </Link>
           <NavMenu></NavMenu>
         </div>
-        <ul className="flex items-center space-x-8">
+        <ul className="hidden sm:flex items-center space-x-8">
           <li>
             <a href="https://github.com/rsurya99" target='_blank'><IconBrandGithub /></a>
           </li>

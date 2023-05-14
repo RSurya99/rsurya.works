@@ -33,17 +33,17 @@ const Footer = () => {
   }
 
   return (
-    <footer className="max-w-screen-xl mx-auto px-4 pb-6 space-y-6">
+    <footer className="max-w-screen-xl mx-auto pb-6 space-y-4 sm:space-y-6 text-sm sm:text-base">
       {router.pathname !== '/' && (
         <div className={`w-full mx-auto${isRoutesInclude(router.pathname) ? ' max-w-5xl' : ''}`}>
-          <button onClick={goBack} className='flex items-center font-medium text-primary-300 dark:text-zinc-200 hover:text-primary hover:dark:text-zinc-50 hover:underline transition-colors duration-300'>
+          <button onClick={goBack} className='px-4 flex items-center font-medium text-primary-300 dark:text-zinc-200 hover:text-primary hover:dark:text-zinc-50 hover:underline transition-colors duration-300'>
             <IconChevronRight size={20} />
             <span>cd ..</span>
           </button>
         </div>
       )}
       <hr className="bg-primary-300" />
-      <div className="flex justify-between">
+      <div className="px-4 flex flex-col sm:flex-row gap-y-2.5 sm:gap-y-0 items-center sm:items-start sm:justify-between">
         <div className="flex items-center space-x-8">
           <Link href="/reading-list" className="font-medium text-primary-300 dark:text-zinc-200 hover:text-primary hover:dark:text-zinc-50 transition-colors duration-300">/reading-list</Link>
           <Link href="/cheatsheet" className="font-medium text-primary-300 dark:text-zinc-200 hover:text-primary hover:dark:text-zinc-50 transition-colors duration-300">/cheatsheet</Link>
@@ -55,7 +55,8 @@ const Footer = () => {
           <a href="https://www.linkedin.com/in/rsurya99" target='_blank' className="font-medium border-b-2 border-transparent hover:border-primary transition-colors duration-300">Linkedin</a>
         </div>
       </div>
-      <div className="flex justify-between">
+      <hr className="block sm:hidden bg-primary-300" />
+      <div className="px-4 flex flex-col sm:flex-row items-center sm:items-start justify-between gap-y-2.5 sm:gap-y-0">
         <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' className="font-medium border-b-2 border-transparent hover:border-primary transition-colors duration-300">CC BY-NC-SA 4.0</a>
         <span className="font-medium">&copy; 2023 - Present. Rafli Surya Pratama</span>
       </div>

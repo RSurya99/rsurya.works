@@ -39,8 +39,8 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
       <section className='w-full max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 py-12 px-4 overflow-hidden'>
         <div className="flex flex-col justify-center text-center lg:text-left">
           <span className="text-xl font-medium mb-4">Hi, I’m Rafli ✋</span>
-          <h1 className="text-5xl font-semibold leading-tight mb-4 text-primary dark:text-zinc-50">Front End Engineer based in West Java, Indonesia</h1>
-          <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200 mb-7">I’m a self taught engineer with high enthusiast of open-source. Here you can find all of my writing, projects, and even a cheatsheet.</p>
+          <h1 className="text-4xl sm:text-5xl font-semibold leading-tight mb-4 text-primary dark:text-zinc-50">Front End Engineer based in West Java, Indonesia</h1>
+          <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200 mb-7">I’m a self taught engineer with high enthusiast of open-source. Here you can find all of my writing, projects, and even a cheatsheet.</p>
           <div>
             <Link href='/contact' className="px-12 py-4 inline-block w-full lg:w-fit bg-primary dark:bg-white hover:bg-zinc-700 hover:dark:bg-zinc-200 text-white dark:text-primary font-medium rounded-lg transition-colors duration-300">Contact Me</Link>
           </div>
@@ -71,22 +71,22 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
       {/* Blog Section */}
       <section className='w-full max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
         <div className="space-y-1.5">
-          <h2 className="text-5xl font-semibold leading-tight">Blog</h2>
-          <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">Mostly about web development, technology, and everything in between.</p>
+          <h2 className="text-4xl sm:text-5xl font-semibold leading-tight">Blog</h2>
+          <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">Mostly about web development, technology, and everything in between.</p>
         </div>
         <div className="space-y-6">
           {latestPosts.map((post: any) => (
-          <div key={post.slug} className="flex hover:bg-zinc-100 hover:dark:bg-zinc-700 transition-colors duration-300 p-6 rounded-lg">
+          <div key={post.slug} className="flex flex-col-reverse lg:flex-row hover:bg-zinc-100 hover:dark:bg-zinc-700 transition-colors duration-300 p-1 sm:px-2 sm:py-3 lg:px-4 lg:py-6 rounded-lg">
             <div className="space-y-2">
-              <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">{format(new Date(post.date), 'MMM dd, yyyy')} - {post.readTime}</p>
-              <h3 className="text-4xl font-semibold">{post.title}</h3>
-              <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200 mr-20">{post.excerpt} ...</p>
+              <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">{format(new Date(post.date), 'MMM dd, yyyy')} - {post.readTime}</p>
+              <h3 className="text-3xl sm:text-4xl font-semibold">{post.title}</h3>
+              <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200 mr-20">{post.excerpt} ...</p>
               <Link href={`/posts/${post.slug}`} className="py-2 flex items-center w-fit">
                 Read more
                 <IconChevronRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
-            <Image src={post.cover} width={400} height={235} className="rounded-lg aspect-[16/10] object-cover object-center" alt={post.title + ' image'} />
+            <Image src={post.cover} width={400} height={235} className="w-full lg:w-fit rounded-lg aspect-[16/10] object-cover object-center" alt={post.title + ' image'} />
           </div>
           ))}
         </div>
@@ -98,10 +98,10 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
       {/* Projects Section */}
       <section className='w-full max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
         <div className="space-y-1.5">
-          <h2 className="text-5xl font-semibold leading-tight">Projects</h2>
-          <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">List of projects that I am proud of.</p>
+          <h2 className="text-4xl sm:text-5xl font-semibold leading-tight">Projects</h2>
+          <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">List of projects that I am proud of.</p>
         </div>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {latestProjects.map((project: any) => (
             <Link href={`/projects/${project.slug}`} key={project.slug} className="mb-2 bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
               <div className="inline-block p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
@@ -133,17 +133,17 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
       {/* Reading List Section */}
       <section className='w-full max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
         <div className="space-y-1.5">
-          <h2 className="text-5xl font-semibold leading-tight">Reading List</h2>
-          <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">My curated collection of bookmarks for useful resources.</p>
+          <h2 className="text-4xl sm:text-5xl font-semibold leading-tight">Reading List</h2>
+          <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">My curated collection of bookmarks for useful resources.</p>
         </div>
         <div className="space-y-6">
           {latestReadingLists.map((reading: any) => (
             <a href={reading.link} target='_blank' key={reading.link} className="w-full inline-block group rounded-lg bg-zinc-300 dark:bg-zinc-700 overflow-hidden cursor-pointer">
-              <div className="px-4 py-3 flex items-center">
-                <div className="text-2xl font-semibold group-hover:underline">{reading.title}</div>
+              <div className="px-4 py-3 flex items-center justify-between sm:justify-normal">
+                <div className="text-xl sm:text-2xl font-semibold group-hover:underline">{reading.title}</div>
                 <IconArrowNarrowRight className="ml-3" />
               </div>
-              <div className="px-4 py-3 bg-primary dark:bg-white text-zinc-200 dark:text-primary-300">
+              <div className="px-4 py-3 bg-primary dark:bg-white text-sm sm:text-base text-zinc-200 dark:text-primary-300">
                 {reading.domain}
               </div>
             </a>
@@ -157,12 +157,12 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
       {/* Cheatsheet Section */}
       <section className='w-full max-w-screen-xl mx-auto px-4 py-12 space-y-8'>
         <div className="space-y-1.5">
-          <h2 className="text-5xl font-semibold leading-tight">Cheatsheet</h2>
-          <p className="text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">I’ve learned a lot of things, but I have forgotten a lot.</p>
+          <h2 className="text-4xl sm:text-5xl font-semibold leading-tight">Cheatsheet</h2>
+          <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">I’ve learned a lot of things, but I have forgotten a lot.</p>
         </div>
         <div>
           <div className="inline-block p-2.5 bg-primary dark:bg-zinc-200 text-white dark:text-primary rounded-tr-lg rounded-tl-lg">~/Latest</div>
-          <div className="border border-primary dark:border-zinc-200 grid grid-cols-3 gap-x-6 gap-y-1 p-2">
+          <div className="border border-primary dark:border-zinc-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1 p-2">
             {latestCheatsheets.map((cheatsheet: any) => (
               <Link key={cheatsheet.slug} href={`/cheatsheet/${cheatsheet.slug}`} className="px-3 py-2 flex items-center hover:bg-zinc-100 hover:dark:bg-zinc-700 cursor-pointer">
                 <IconFile className="mr-2" />
