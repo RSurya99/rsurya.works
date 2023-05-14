@@ -34,9 +34,9 @@ const Navbar = () => {
             <a href="https://www.linkedin.com/in/rsurya99" target='_blank'><IconBrandLinkedin /></a>
           </li>
           <li>
-            <button onClick={() => theme == "dark"? setTheme('light'): setTheme("dark")}>
+            <a onClick={() => theme == "dark"? setTheme('light'): setTheme("dark")} className='cursor-pointer'>
               <IconMoon />
-            </button>
+            </a>
           </li>
         </ul>
       </nav>
