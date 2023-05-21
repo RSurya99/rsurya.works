@@ -23,14 +23,14 @@ const Navbar = () => {
           </Link>
           <NavMenu></NavMenu>
         </div>
-        <ul className="hidden sm:flex items-center space-x-8">
-          <li>
+        <ul className="flex items-center space-x-8">
+          <li className='hidden sm:block'>
             <a href="https://github.com/rsurya99" target='_blank'><IconBrandGithub /></a>
           </li>
-          <li>
+          <li className='hidden sm:block'>
             <a href="https://twitter.com/rsurya99" target='_blank'><IconBrandTwitter /></a>
           </li>
-          <li>
+          <li className='hidden sm:block'>
             <a href="https://www.linkedin.com/in/rsurya99" target='_blank'><IconBrandLinkedin /></a>
           </li>
           <li>
