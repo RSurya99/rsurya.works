@@ -14,6 +14,7 @@ import PHPLogo from './PHPLogo'
 import LaravelLogo from './LaravelLogo'
 import NextLogo from './NextLogo'
 import CSSLogo from './CSSLogo'
+import MDXLogo from './MDXLogo'
 
 const BaseLogo = ({ componentName, ...attributes }: any) => {
   const componentsMap: any = { 
@@ -31,7 +32,8 @@ const BaseLogo = ({ componentName, ...attributes }: any) => {
     Alpine: AlpineLogo,
     PHP: PHPLogo,
     Laravel: LaravelLogo,
-    CSS: CSSLogo
+    CSS: CSSLogo,
+    MDX: MDXLogo
   }
   const ComponentName: any = componentsMap[componentName] || ReactLogo
   return (
