@@ -12,7 +12,6 @@ import { getLatestProjectsMeta } from '~/lib/projects'
 import { getLatestReadingLists } from '~/lib/readingLists'
 import { getLatestPostsMeta } from '~/lib/posts'
 import { format } from 'date-fns'
-import { useEffect } from 'react';
 import BaseLogo from '~/components/logo/Base';
 
 export async function getStaticProps() {
@@ -105,7 +104,11 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
           {latestProjects.map((project: any) => (
             <Link href={`/projects/${project.slug}`} key={project.slug} className="mb-2 flex flex-col justify-between  bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
               <div className="inline-block w-fit p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
-                <Image src={project.logo} width={32} height={32} alt={project.title + ' Project'} />
+                  {project.logo ? 
+                  <Image src={project.logo} width={32} height={32} alt={project.title + ' Project'} />
+                  :
+                  <div className="w-8 h-8 rounded-full bg-zinc-50 dark:bg-primary border-8 border-primary dark:border-zinc-50"></div>
+                  }
               </div>
               <h4 className="text-2xl font-semibold text-white dark:text-primary leading-tight">{project.title}</h4>
               <p className="text-zinc-200 dark:text-primary-300 tracking-wide leading-relaxed">{project.excerpt}</p>

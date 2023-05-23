@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import DefaultLayout from '~/layouts/default'
 import Link from 'next/link'
 import Image from 'next/image'

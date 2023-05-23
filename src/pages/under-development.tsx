@@ -1,5 +1,4 @@
 import DefaultLayout from '~/layouts/default'
-import Head from 'next/head'
 import React from 'react'
 
 function Home() {

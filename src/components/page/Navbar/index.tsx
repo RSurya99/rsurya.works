@@ -9,8 +9,7 @@ import { SidebarContext } from '~/contexts/SidebarContext'
 
 const Navbar = () => {
   const { setOpen } = useContext(SidebarContext)
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === 'system' ? systemTheme : theme;
+  const { theme, setTheme } = useTheme();
   
   return (
     <header className='sticky top-0 px-4 py-6 backdrop-filter backdrop-blur-md bg-white/80 dark:bg-primary/80 z-50 transition duration-300'>

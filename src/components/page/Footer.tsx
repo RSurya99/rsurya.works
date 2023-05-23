@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { IconChevronRight } from '@tabler/icons-react'
 import { useRouter } from 'next/router'
@@ -7,7 +7,7 @@ const Footer = () => {
   const router = useRouter()
   // function to go back to root 
   const goBack = () => {
-    const path = router.pathname.split('/')
+    // const path = router.pathname.split('/')
     // path.pop()
     // router.push(path.join('/') || '/')
     router.back()

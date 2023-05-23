@@ -1,7 +1,5 @@
 import DefaultLayout from '~/layouts/default'
 import { IconClockHour3 } from '@tabler/icons-react'
-import { IconBrandGithub } from '@tabler/icons-react'
-import { IconExternalLink } from '@tabler/icons-react'
 import { IconCalendar } from '@tabler/icons-react'
 import Image from 'next/image'
 import React from 'react'

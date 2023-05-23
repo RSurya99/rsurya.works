@@ -1,5 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useState, createContext } from 'react';
 
 type SidebarType = {
   open: boolean, 

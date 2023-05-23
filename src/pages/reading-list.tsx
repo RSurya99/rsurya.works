@@ -1,12 +1,5 @@
 import DefaultLayout from '~/layouts/default'
 import { IconArrowNarrowRight } from "@tabler/icons-react";
-import { IconBrandGithub } from "@tabler/icons-react";
-import { IconFile } from "@tabler/icons-react";
-import { IconLink } from "@tabler/icons-react";
-import { IconChevronRight } from "@tabler/icons-react";
-import Image from "next/image";
-import Link from "next/link";
-import Character from "~/components/utils/Character";
 import { getAllReadingLists } from '~/lib/readingLists'
 
 export async function getStaticProps() {
