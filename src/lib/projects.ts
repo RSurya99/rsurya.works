@@ -75,10 +75,11 @@ export const getProjectMeta = (slug: any) => {
 
 export const getLatestProjectsMeta = (length?: number) => {
   const projects = getAllProjectsMeta()
+  const sortedProjects = projects.sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
   if(length){
-    return projects.slice(0, length)
+    return sortedProjects.slice(0, length)
   }
-  return projects
+  return sortedProjects
 }
 
 export const getAllProjectsMeta = () => {

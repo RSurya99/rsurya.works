@@ -22,7 +22,6 @@ export default function App({ Component, pageProps }: Props) {
   const router = useRouter()
 
   useEffect(() => {
-    console.log('node-env', process.env.NODE_ENV)
     if (process.env.NODE_ENV === 'production') {
       analytics();
     }

@@ -24,14 +24,14 @@ const ProjectDetail = ({ meta, source }: any) => {
             <IconClockHour3 className='mr-1.5' />
             {meta.readTime}
           </div>
-          <a href={meta.repository} target='_blank' className="flex items-center underline">
+          {meta.repository && <a href={meta.repository} target='_blank' className="flex items-center underline">
             <IconBrandGithub className='mr-1.5' />
             Repository
-          </a>
-          <a href={meta.link} target='_blank' className="flex items-center underline">
+          </a>}
+          {meta.link && <a href={meta.link} target='_blank' className="flex items-center underline">
             <IconExternalLink className='mr-1.5' />
             Live site
-          </a>
+          </a>}
         </div>
         <div className="prose sm:prose-lg dark:prose-invert">
           <MDXRemote {...source} components={MDXComponents} />
