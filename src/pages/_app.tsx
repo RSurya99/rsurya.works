@@ -58,8 +58,8 @@ export default function App({ Component, pageProps }: Props) {
   return (
     <>
       <Head>
-        <title>{routeName} | RSurya99</title>
-        <meta name="description" content="Rafli Surya Pratama Personal Site" />
+        <title>{routeName} | RSurya99 - Rafli Surya Pratama Portfolio</title>
+        <meta name="description" content="Rafli Surya Pratama (@RSurya99) Personal Site" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
