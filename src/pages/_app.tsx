@@ -3,11 +3,10 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from "next-themes"
 import DefaultLayout from '~/layouts/default'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { analytics } from '~/utils/firebase'
 import { useRouter } from 'next/router'
 import { SidebarProvider } from '~/contexts/SidebarContext'
-import { capitalize } from 'lodash'
 
 type Page = {
   getLayout?: () => React.ReactNode,
@@ -20,7 +19,6 @@ type Props = AppProps & {
 
 export default function App({ Component, pageProps }: Props) {
   const router = useRouter()
-  const [routeName, setRouteName] = useState<string>('Home')
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
@@ -46,19 +44,10 @@ export default function App({ Component, pageProps }: Props) {
     }
   }, []);
 
-  useEffect(() => {
-    console.log('router', router)
-    if(router.pathname !== '/') {
-      setRouteName(capitalize(router.pathname.split('/')[1]))
-    }else{
-      setRouteName('Home')
-    }
-  }, [router])
-
   return (
     <>
       <Head>
-        <title>{routeName} | RSurya99 - Rafli Surya Pratama Portfolio</title>
+        <title>Home | RSurya99 - Rafli Surya Pratama Portfolio</title>
         <meta name="description" content="Rafli Surya Pratama (@RSurya99) Personal Site" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
