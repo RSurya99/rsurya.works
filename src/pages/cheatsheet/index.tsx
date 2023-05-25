@@ -1,10 +1,11 @@
 import DefaultLayout from '~/layouts/default'
-import { IconFile, IconSearch } from '@tabler/icons-react'
+import { IconSearch } from '@tabler/icons-react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { getMapCheatsheetsMeta, getCheatsheetCategories } from '~/lib/cheatsheets'
 import { flatten } from 'lodash'
 import useOutsideClick from '~/hooks/useClickOutside'
+import CheatsheetCard from '~/components/base/CheatsheetCard'
 
 export async function getStaticProps() {
   const cheatsheets = getMapCheatsheetsMeta()
@@ -81,17 +82,7 @@ const CheatsheetIndex = ({ cheatsheets, categories }: any) => {
       </div>
       <div className="space-y-6">
         {categories.map((el: string) => (
-        <div key={el}>
-          <a href={`#${el}`} className="inline-block p-2.5 bg-primary dark:bg-zinc-200 text-white dark:text-primary rounded-tr-lg rounded-tl-lg">~/{el}</a>
-          <div className="border border-primary dark:border-zinc-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1 p-2">
-            {cheatsheets[el].map((cheatsheet: any) => (
-              <Link key={cheatsheet.slug} href={`/cheatsheet/${cheatsheet.slug}`} className="px-3 py-2 flex items-center hover:bg-zinc-100 hover:dark:bg-zinc-700 cursor-pointer">
-                <IconFile className="mr-2" />
-                {cheatsheet.slug}
-              </Link>
-            ))}
-          </div>
-        </div>
+          <CheatsheetCard key={el} title={el} cheatsheets={cheatsheets[el]}  />
         ))}
       </div>
     </section>

@@ -1,8 +1,5 @@
 import DefaultLayout from '~/layouts/default'
 import { IconArrowNarrowRight } from "@tabler/icons-react";
-import { IconBrandGithub } from "@tabler/icons-react";
-import { IconFile } from "@tabler/icons-react";
-import { IconLink } from "@tabler/icons-react";
 import { IconChevronRight } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +9,9 @@ import { getLatestProjectsMeta } from '~/lib/projects'
 import { getLatestReadingLists } from '~/lib/readingLists'
 import { getLatestPostsMeta } from '~/lib/posts'
 import { format } from 'date-fns'
-import BaseLogo from '~/components/logo/Base';
+import CheatsheetCard from '~/components/base/CheatsheetCard'
+import ProjectCard from '~/components/base/ProjectCard';
+import ReadingListCard from '~/components/base/ReadingList/Card';
 
 export async function getStaticProps() {
   const latestCheatsheets = getLatestCheatsheetsMeta(6)
@@ -102,30 +101,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-8">
           {latestProjects.map((project: any) => (
-            <Link href={`/projects/${project.slug}`} key={project.slug} className="mb-2 flex flex-col justify-between  bg-primary dark:bg-zinc-200 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
-              <div className="inline-block w-fit p-2 rounded-full bg-zinc-300 dark:bg-zinc-700">
-                  {project.logo ? 
-                  <Image src={project.logo} width={32} height={32} alt={project.title + ' Project'} />
-                  :
-                  <div className="w-8 h-8 rounded-full bg-zinc-50 dark:bg-primary border-8 border-primary dark:border-zinc-50"></div>
-                  }
-              </div>
-              <h4 className="text-2xl font-semibold text-white dark:text-primary leading-tight">{project.title}</h4>
-              <p className="text-zinc-200 dark:text-primary-300 tracking-wide leading-relaxed">{project.excerpt}</p>
-              <div className="pt-6 flex items-center justify-between">
-                <div className="flex flex-wrap gap-2">
-                  {project.tags && project.tags.map((tag:string) => (
-                    <div key={tag} className="p-1.5 rounded-full bg-white dark:bg-primary text-primary-300 dark:text-zinc-200">
-                      <BaseLogo componentName={tag} className='w-6 h-6' />
-                    </div>
-                  ))}
-                </div>
-                <div className="mb-1 flex space-x-2 text-white dark:text-primary self-end">
-                  <div><IconLink /></div>
-                  <div><IconBrandGithub /></div>
-                </div>
-              </div>
-            </Link>
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
         <Link href='/projects' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
@@ -141,15 +117,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
         </div>
         <div className="space-y-6">
           {latestReadingLists.map((reading: any) => (
-            <a href={reading.link} target='_blank' key={reading.link} className="w-full inline-block group rounded-lg bg-zinc-300 dark:bg-zinc-700 overflow-hidden cursor-pointer">
-              <div className="px-4 py-3 flex items-center justify-between sm:justify-normal">
-                <div className="text-xl sm:text-2xl font-semibold group-hover:underline">{reading.title}</div>
-                <IconArrowNarrowRight className="ml-3" />
-              </div>
-              <div className="px-4 py-3 bg-primary dark:bg-white text-sm sm:text-base text-zinc-200 dark:text-primary-300">
-                {reading.domain}
-              </div>
-            </a>
+            <ReadingListCard key={reading.link} reading={reading} />
           ))}
         </div>
         <Link href='reading-list' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
@@ -163,17 +131,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
           <h2 className="text-4xl sm:text-5xl font-semibold leading-tight">Cheatsheet</h2>
           <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">I’ve learned a lot of things, but I have forgotten a lot.</p>
         </div>
-        <div>
-          <div className="inline-block p-2.5 bg-primary dark:bg-zinc-200 text-white dark:text-primary rounded-tr-lg rounded-tl-lg">~/Latest</div>
-          <div className="border border-primary dark:border-zinc-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1 p-2">
-            {latestCheatsheets.map((cheatsheet: any) => (
-              <Link key={cheatsheet.slug} href={`/cheatsheet/${cheatsheet.slug}`} className="px-3 py-2 flex items-center hover:bg-zinc-100 hover:dark:bg-zinc-700 cursor-pointer">
-                <IconFile className="mr-2" />
-                {cheatsheet.slug}
-              </Link>
-            ))}
-          </div>
-        </div>
+        <CheatsheetCard title='Latests' cheatsheets={latestCheatsheets} />
         <Link href='/cheatsheet' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
           View all cheatsheet
           <IconArrowNarrowRight className="ml-2" />
