@@ -9,7 +9,7 @@ const ProjectCard = ({ project }: any) => {
     <Link href={`/projects/${project.slug}`} className="mb-2 flex flex-col justify-between bg-primary dark:bg-zinc-700 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
       <div className="inline-block w-fit p-2 rounded-full bg-zinc-200">
           {project.logo ? 
-          <Image src={project.logo} width={32} height={32} alt={project.title + ' Project'} />
+          <Image src={project.logo} width={32} height={32} alt={project.title + ' Project'} className='w-8 h-8' />
           :
           <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-100 border-8 border-primary dark:border-zinc-700"></div>
           }

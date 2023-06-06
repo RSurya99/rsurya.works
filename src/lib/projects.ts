@@ -87,6 +87,7 @@ export const getAllProjectsMeta = () => {
   const projects = files
     .map(file => getProjectMeta(file))
     .sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+  console.log('projects', projects)
   return projects
 }
 
