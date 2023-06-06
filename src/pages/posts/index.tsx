@@ -80,7 +80,7 @@ const BlogIndex = ({ posts, categories, latestPosts }: Props) => {
         {categories.map((category: string) => (
         <section key={category} className='space-y-6'>
           <h2 className='text-3xl sm:text-4xl font-semibold'>{category}</h2>
-          <hr className='border border-primary/25' />
+          <hr className='border border-primary/25 dark:border-zinc-100/25' />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10">
             {posts[category].map((post: Post) => (
             <Link href={`/posts/${post.slug}`} key={post.slug} className="flex flex-col sm:flex-row lg:flex-col gap-3">

@@ -10,7 +10,6 @@ import rehypePrettyCode from 'rehype-pretty-code'
 const prettyCodeOptions = {
   theme: 'material-theme-palenight',
   onVisitLine(node: any) {
-    console.log('nodemua', node)
     if (node.children.length === 0) {
       node.children = [{ type: 'text', value: ' ' }]
     }
