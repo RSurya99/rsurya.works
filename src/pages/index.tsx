@@ -74,21 +74,20 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
         </div>
         <div className="space-y-6">
           {latestPosts.map((post: any) => (
-          <div key={post.slug} className="flex flex-col-reverse lg:flex-row hover:bg-zinc-100 hover:dark:bg-zinc-700 transition-colors duration-300 p-1 sm:px-2 sm:py-3 lg:px-4 lg:py-6 rounded-lg">
+          <div key={post.slug} className="flex flex-col-reverse lg:flex-row bg-zinc-200 dark:bg-zinc-700 transition-colors duration-300 p-1 sm:px-2 sm:py-3 lg:px-6 lg:py-6 rounded-lg">
             <div className="space-y-2">
               <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">{format(new Date(post.date), 'MMM dd, yyyy')} - {post.readTime}</p>
               <h3 className="text-3xl sm:text-4xl font-semibold">{post.title}</h3>
               <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200 mr-20">{post.excerpt} ...</p>
-              <Link href={`/posts/${post.slug}`} className="py-2 flex items-center w-fit">
+              <Link href={`/posts/${post.slug}`} className="py-2 flex items-center w-fit underline">
                 Read more
-                <IconChevronRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
             <Image src={post.cover} width={400} height={235} className="w-full lg:w-[400px] rounded-lg aspect-[16/10] object-cover object-center" alt={post.title + ' image'} />
           </div>
           ))}
         </div>
-        <Link href='/posts' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
+        <Link href='/posts' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-200 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
           See all my posts
           <IconArrowNarrowRight className="ml-2" />
         </Link>
@@ -104,7 +103,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
-        <Link href='/projects' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
+        <Link href='/projects' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-200 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
           See all my projects
           <IconArrowNarrowRight className="ml-2" />
         </Link>
@@ -120,7 +119,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
             <ReadingListCard key={reading.link} reading={reading} />
           ))}
         </div>
-        <Link href='reading-list' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
+        <Link href='reading-list' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-200 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
           View all bookmarks
           <IconArrowNarrowRight className="ml-2" />
         </Link>
@@ -132,7 +131,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
           <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">I’ve learned a lot of things, but I have forgotten a lot.</p>
         </div>
         <CheatsheetCard title='Latests' cheatsheets={latestCheatsheets} />
-        <Link href='/cheatsheet' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-100 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
+        <Link href='/cheatsheet' className="w-fit p-3 flex items-center font-medium hover:bg-zinc-200 hover:dark:bg-zinc-700 rounded-lg transition-colors duration-300">
           View all cheatsheet
           <IconArrowNarrowRight className="ml-2" />
         </Link>
