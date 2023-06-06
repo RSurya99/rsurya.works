@@ -4,6 +4,7 @@ import { getMapProjectsMeta, getProjectCategories, getLatestProjectsMeta } from 
 import { uuid } from '~/utils/uuid'
 import ProjectCard from '~/components/base/ProjectCard'
 import Head from 'next/head'
+import type { Project, Projects } from '~/types/project'
 
 export async function getStaticProps() {
   const latestProjects = getLatestProjectsMeta(3)
@@ -19,7 +20,13 @@ export async function getStaticProps() {
   }
 }
 
-const ProjectsIndex = ({ latestProjects, projects, categories }: any) => {
+type Props = {
+  latestProjects: Project[],
+  projects: Projects,
+  categories: string[]
+}
+
+const ProjectsIndex = ({ latestProjects, projects, categories }: Props) => {
   return (
     <>
       <Head>
@@ -36,7 +43,7 @@ const ProjectsIndex = ({ latestProjects, projects, categories }: any) => {
         <div className="space-y-6">
           <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">Latest</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-8">
-            {latestProjects.map((project: any) => (
+            {latestProjects.map((project: Project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
@@ -45,7 +52,7 @@ const ProjectsIndex = ({ latestProjects, projects, categories }: any) => {
         <div key={uuid()} className="space-y-6">
           <h2 className="text-3xl sm:text-4xl font-semibold leading-tight">{el}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-8">
-            {projects[el].map((project: any) => (
+            {projects[el].map((project: Project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
           </div>

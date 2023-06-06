@@ -1,12 +1,17 @@
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 const CustomLink = (props: any) => {
-  const href = props.href
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'))
+  const link = props.href
+  const isInternalLink = link && (link.startsWith('/') || link.startsWith('#'))
+
+  useEffect(() => {
+    console.log('link props', props)
+  })
 
   if (isInternalLink) {
     return (
-      <Link href={href} {...props} className='no-underline'>
+      <Link href={link} {...props} className='no-underline'>
         {props.children}
       </Link>
     )

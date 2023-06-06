@@ -11,6 +11,10 @@ import { format } from 'date-fns'
 import CheatsheetCard from '~/components/base/CheatsheetCard'
 import ProjectCard from '~/components/base/ProjectCard';
 import ReadingListCard from '~/components/base/ReadingList/Card';
+import { Post } from '~/types/post';
+import { Project } from '~/types/project';
+import { Reading } from '~/types/reading';
+import { Cheatsheet } from '~/types/cheatsheet';
 
 export async function getStaticProps() {
   const latestCheatsheets = getLatestCheatsheetsMeta(6)
@@ -28,7 +32,13 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home({ latestProjects, latestCheatsheets, latestReadingLists, latestPosts }: any) {
+type Props = {
+  latestProjects: Project[]
+  latestCheatsheets: Cheatsheet[]
+  latestReadingLists: Reading[]
+  latestPosts: Post[]
+}
+export default function Home({ latestProjects, latestCheatsheets, latestReadingLists, latestPosts }: Props) {
 
   return (
     <div className="space-y-12">
@@ -72,7 +82,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
           <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">Mostly about web development, technology, and everything in between.</p>
         </div>
         <div className="space-y-6">
-          {latestPosts.map((post: any) => (
+          {latestPosts.map((post: Post) => (
           <div key={post.slug} className="flex flex-col-reverse lg:flex-row bg-zinc-200 dark:bg-zinc-700 transition-colors duration-300 p-1 sm:px-2 sm:py-3 lg:px-6 lg:py-6 rounded-lg">
             <div className="space-y-2">
               <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">{format(new Date(post.date), 'MMM dd, yyyy')} - {post.readTime}</p>
@@ -98,7 +108,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
           <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">List of projects that I am proud of.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-8">
-          {latestProjects.map((project: any) => (
+          {latestProjects.map((project: Project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
@@ -114,7 +124,7 @@ export default function Home({ latestProjects, latestCheatsheets, latestReadingL
           <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">My curated collection of bookmarks for useful resources.</p>
         </div>
         <div className="space-y-6">
-          {latestReadingLists.map((reading: any) => (
+          {latestReadingLists.map((reading: Reading) => (
             <ReadingListCard key={reading.link} reading={reading} />
           ))}
         </div>

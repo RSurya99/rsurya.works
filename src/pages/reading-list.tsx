@@ -2,6 +2,7 @@ import DefaultLayout from '~/layouts/default'
 import { getAllReadingLists } from '~/lib/readingLists'
 import ReadingListCard from '~/components/base/ReadingList/Card'
 import Head from 'next/head'
+import { Reading } from '~/types/reading'
 
 export async function getStaticProps() {
   const readingLists = getAllReadingLists()
@@ -13,7 +14,11 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home({ readingLists }: any) {
+type Props = {
+  readingLists: Reading[]
+}
+
+export default function Home({ readingLists }: Props) {
   return (
     <>
       <Head>
@@ -29,7 +34,7 @@ export default function Home({ readingLists }: any) {
             <p className="text-base sm:text-lg tracking-wide leading-relaxed text-primary-300 dark:text-zinc-200">My curated collection of bookmarks for useful resources.</p>
           </div>
           <div className="space-y-6">
-            {readingLists.map((reading: any) => (
+            {readingLists.map((reading: Reading) => (
               <ReadingListCard key={reading.link} reading={reading} />
             ))}
           </div>

@@ -10,6 +10,7 @@ import rehypePrettyCode from 'rehype-pretty-code'
 const prettyCodeOptions = {
   theme: 'material-theme-palenight',
   onVisitLine(node: any) {
+    console.log('nodemua', node)
     if (node.children.length === 0) {
       node.children = [{ type: 'text', value: ' ' }]
     }
@@ -24,7 +25,7 @@ const prettyCodeOptions = {
 
 const rootDirectory = path.join(process.cwd(), 'src/content', 'cheatsheets')
 
-export const getCheatsheetBySlug = async (slug: any) => {
+export const getCheatsheetBySlug = async (slug: string) => {
   const realSlug = slug.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
@@ -54,7 +55,7 @@ export const getCheatsheetBySlug = async (slug: any) => {
   return cheatsheet
 }
 
-export const getCheatsheetMeta = (slug: any) => {
+export const getCheatsheetMeta = (slug: string) => {
   const realSlug = slug.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
@@ -64,6 +65,8 @@ export const getCheatsheetMeta = (slug: any) => {
 
   const meta = {
     ...data,
+    date: data.date,
+    category: data.category,
     slug: realSlug,
     readTime
   }
@@ -83,14 +86,14 @@ export const getAllCheatsheetsMeta = () => {
   const files = fs.readdirSync(rootDirectory)
   const cheatsheets = files
     .map(file => getCheatsheetMeta(file))
-    .sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+    .sort((a, b): number => new Date(b.date).valueOf() - new Date(a.date).valueOf())
   return cheatsheets
 }
 
 export const getMapCheatsheetsMeta = () => {
   const cheatsheets = getAllCheatsheetsMeta()
   const mapCheatsheets = cheatsheets
-    .reduce((acc: any, curr: any) => {
+    .reduce((acc: any, curr) => {
       if(acc[curr.category]){
         acc[curr.category].push(curr)
       }else{
@@ -104,8 +107,8 @@ export const getMapCheatsheetsMeta = () => {
 export const getCheatsheetCategories = () => {
   const cheatsheets = getAllCheatsheetsMeta()
   const categories = cheatsheets
-    .map((el: any) => el.category)
-    .filter((el: any, i: any, arr: any) => arr.indexOf(el) === i)
+    .map((el) => el.category)
+    .filter((el, i: number, arr: string[]) => arr.indexOf(el) === i)
   return categories
 }
 

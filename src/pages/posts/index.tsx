@@ -8,6 +8,7 @@ import { getLatestPostsMeta, getMapPostsMeta, getPostCategories } from '~/lib/po
 import { format } from 'date-fns'
 import { kebabCase } from 'lodash'
 import Head from 'next/head'
+import type { Post, Posts } from '~/types/post'
 
 export async function getStaticProps() {
   const posts = getMapPostsMeta()
@@ -23,9 +24,15 @@ export async function getStaticProps() {
   }
 }
 
-const BlogIndex = ({ posts, categories, latestPosts }: any) => {
-  const firstLatestPost = latestPosts.length && latestPosts[0]
-  const restLatestPosts = latestPosts.length && latestPosts.slice(1)
+type Props = {
+  latestPosts: Post[],
+  posts: Posts,
+  categories: string[]
+}
+
+const BlogIndex = ({ posts, categories, latestPosts }: Props) => {
+  const firstLatestPost = latestPosts[0]
+  const restLatestPosts = latestPosts.length ? latestPosts.slice(1) : []
 
   return (
     <>
@@ -52,7 +59,7 @@ const BlogIndex = ({ posts, categories, latestPosts }: any) => {
           <div className='space-y-6'>
             <h3 className='text-3xl sm:text-4xl lg:text-2xl font-semibold'>Recent Posts</h3>
             <hr className='block lg:hidden border border-primary/25' />
-            {restLatestPosts.length ? restLatestPosts.map((post: any) => (
+            {restLatestPosts.length ? restLatestPosts.map((post: Post) => (
               <Link href={`/posts/${post.slug}`} key={post.slug} className="flex flex-col sm:flex-row gap-x-5">
                 <Image src={post.cover} width={225} height={146} alt='Post Image' className='w-full sm:w-[225px] rounded-lg aspect-[16/10] object-cover object-center' />
                 <div className="space-y-1.5">
@@ -70,12 +77,12 @@ const BlogIndex = ({ posts, categories, latestPosts }: any) => {
             )}
           </div>
         </section>
-        {categories.map((category: any) => (
+        {categories.map((category: string) => (
         <section key={category} className='space-y-6'>
           <h2 className='text-3xl sm:text-4xl font-semibold'>{category}</h2>
           <hr className='border border-primary/25' />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10">
-            {posts[category].map((post: any) => (
+            {posts[category].map((post: Post) => (
             <Link href={`/posts/${post.slug}`} key={post.slug} className="flex flex-col sm:flex-row lg:flex-col gap-3">
               <Image src={post.cover} width={400} height={235} alt='Post Image' className='w-full sm:w-[225px] lg:w-[400px] rounded-lg aspect-[16/10] object-cover object-center' />
               <div className="space-y-2">

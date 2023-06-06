@@ -25,7 +25,7 @@ const prettyCodeOptions = {
 
 const rootDirectory = path.join(process.cwd(), 'src/content', 'projects')
 
-export const getProjectBySlug = async (slug: any) => {
+export const getProjectBySlug = async (slug: string) => {
   const realSlug = slug.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
@@ -56,7 +56,7 @@ export const getProjectBySlug = async (slug: any) => {
   return project
 }
 
-export const getProjectMeta = (slug: any) => {
+export const getProjectMeta = (slug: string) => {
   const realSlug = slug.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
@@ -66,6 +66,8 @@ export const getProjectMeta = (slug: any) => {
 
   const meta = {
     ...data,
+    category: data.category,
+    date: data.date,
     slug: realSlug,
     readTime
   }
@@ -75,7 +77,7 @@ export const getProjectMeta = (slug: any) => {
 
 export const getLatestProjectsMeta = (length?: number) => {
   const projects = getAllProjectsMeta()
-  const sortedProjects = projects.sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+  const sortedProjects = projects.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
   if(length){
     return sortedProjects.slice(0, length)
   }
@@ -86,15 +88,14 @@ export const getAllProjectsMeta = () => {
   const files = fs.readdirSync(rootDirectory)
   const projects = files
     .map(file => getProjectMeta(file))
-    .sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
-  console.log('projects', projects)
+    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
   return projects
 }
 
 export const getMapProjectsMeta = () => {
   const projects = getAllProjectsMeta()
   const mapProjects = projects
-    .reduce((acc: any, curr: any) => {
+    .reduce((acc: any, curr) => {
       if(acc[curr.category]){
         acc[curr.category].push(curr)
       }else{
@@ -108,8 +109,8 @@ export const getMapProjectsMeta = () => {
 export const getProjectCategories = () => {
   const projects = getAllProjectsMeta()
   const categories = projects
-    .map((el: any) => el.category)
-    .filter((el: any, i: any, arr: any) => arr.indexOf(el) === i)
+    .map((el) => el.category)
+    .filter((el, i: number, arr) => arr.indexOf(el) === i)
   return categories
 }
 

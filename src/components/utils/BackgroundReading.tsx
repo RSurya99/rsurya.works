@@ -1,6 +1,12 @@
 import Link from 'next/link'
 
-const BackgroundReading = ({ href, title, children }: any) => {
+type Props = {
+  href: string
+  title: string
+  children: React.ReactNode
+}
+
+const BackgroundReading = ({ href, title, children }: Props) => {
   const isInternalLink =
     href && (href.startsWith('/') || href.startsWith('#'))
 

@@ -6,8 +6,10 @@ import { IconCalendarDue } from '@tabler/icons-react'
 import { IconClockHour3 } from '@tabler/icons-react'
 import { format } from 'date-fns'
 import Head from 'next/head'
+import type { MDXType } from '~/types/mdx'
+import { GetStaticPropsContext } from 'next'
 
-const CheatsheetDetail = ({ meta, source }: any) => {
+const CheatsheetDetail = ({ meta, source }: MDXType) => {
   const headTitle = `${meta.title} - Cheatsheet Detail | RSurya99 - Rafli Surya Pratama Portfolio`
   return (
     <>
@@ -38,9 +40,9 @@ const CheatsheetDetail = ({ meta, source }: any) => {
   )
 }
 
-export async function getStaticProps({ params }: any) {
-  const { slug } = params
-  const { meta, source } = await getCheatsheetBySlug(slug)
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
+  const { params } = context
+  const { meta, source } = await getCheatsheetBySlug(params ? params.slug : '')
 
   return {
     props: {
@@ -52,7 +54,7 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   const slugs = getAllSlugs()
-  const paths = slugs.map((slug: any) => ({ params: { slug } }))
+  const paths = slugs.map((slug: string) => ({ params: { slug } }))
 
   return {
     paths,

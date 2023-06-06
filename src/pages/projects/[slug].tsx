@@ -10,8 +10,10 @@ import MDXComponents from '~/components/mdx/MDXComponents'
 import { getProjectBySlug, getProjectsSlug } from '~/lib/projects'
 import { format } from 'date-fns'
 import Head from 'next/head'
+import type { MDXType } from '~/types/mdx'
+import { GetStaticPropsContext } from 'next'
 
-const ProjectDetail = ({ meta, source }: any) => {
+const ProjectDetail = ({ meta, source }: MDXType) => {
   const headTitle = `${meta.title} - Project Detail | RSurya99 - Rafli Surya Pratama Portfolio`
   return (
     <>
@@ -22,7 +24,7 @@ const ProjectDetail = ({ meta, source }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className='w-full max-w-5xl mx-auto px-4 py-12 space-y-8'>
-        {meta.cover && <Image src={meta.cover} width={1024} height={728} alt={meta.title + ' Post'}  className='rounded-xl' />}
+        {meta.cover && <Image src={meta.cover} width={1024} height={728} alt={meta.title + ' Post'}  className='rounded-xl' priority />}
         <div className="flex flex-wrap items-center text-base sm:text-lg gap-4 md:gap-8 font-medium mb-4">
           <a href="#" className='underline'>#{meta.category}</a>
           <div className="flex items-center">
@@ -49,11 +51,10 @@ const ProjectDetail = ({ meta, source }: any) => {
     </>
   )
 }
-
-export async function getStaticProps({ params }: any) {
-  const { slug } = params
-  const { meta, source } = await getProjectBySlug(slug)
-
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
+  const { params } = context
+  const { meta, source } = await getProjectBySlug(params ? params.slug : '')
+  
   return {
     props: {
       meta,
@@ -64,7 +65,7 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   const slugs = getProjectsSlug()
-  const paths = slugs.map((slug: any) => ({ params: { slug } }))
+  const paths = slugs.map((slug: string) => ({ params: { slug } }))
 
   return {
     paths,

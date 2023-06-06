@@ -7,7 +7,11 @@ type SidebarType = {
 
 export const SidebarContext = createContext<SidebarType>({ open: false, setOpen: () => {} });
 
-export const SidebarProvider = (props: any) => {
+type Props = {
+  children: React.ReactNode
+}
+
+export const SidebarProvider = (props: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (

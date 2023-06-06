@@ -25,7 +25,7 @@ const prettyCodeOptions = {
 
 const rootDirectory = path.join(process.cwd(), 'src/content', 'posts')
 
-export const getPostBySlug = async (slug: any) => {
+export const getPostBySlug = async (slug: string) => {
   const realSlug = slug.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
@@ -55,7 +55,7 @@ export const getPostBySlug = async (slug: any) => {
   return project
 }
 
-export const getPostMeta = (slug: any) => {
+export const getPostMeta = (slug: string) => {
   const realSlug = slug.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
@@ -65,6 +65,8 @@ export const getPostMeta = (slug: any) => {
 
   const meta = {
     ...data,
+    category: data.category,
+    date: data.date,
     slug: realSlug,
     readTime
   }
@@ -84,14 +86,14 @@ export const getAllPostsMeta = () => {
   const files = fs.readdirSync(rootDirectory)
   const posts = files
     .map(file => getPostMeta(file))
-    .sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
   return posts
 }
 
 export const getMapPostsMeta = () => {
   const posts = getAllPostsMeta()
   const mapPosts = posts
-    .reduce((acc: any, curr: any) => {
+    .reduce((acc: any, curr) => {
       if(acc[curr.category]){
         acc[curr.category].push(curr)
       }else{
@@ -105,14 +107,14 @@ export const getMapPostsMeta = () => {
 export const getPostCategories = () => {
   const posts = getAllPostsMeta()
   const categories = posts
-    .map((el: any) => el.category)
-    .filter((el: any, i: any, arr: any) => arr.indexOf(el) === i)
+    .map((el) => el.category)
+    .filter((el, i: number, arr) => arr.indexOf(el) === i)
   return categories
 }
 
 export const getPostsByCategory = (category: string) => {
   const posts = getAllPostsMeta()
-  const postsByCategory = posts.filter((el: any) => lowerCase(el.category) === lowerCase(category))
+  const postsByCategory = posts.filter((el) => lowerCase(el.category) === lowerCase(category))
   return postsByCategory
 }
 

@@ -8,8 +8,10 @@ import MDXComponents from '~/components/mdx/MDXComponents'
 import { getPostBySlug, getPostsSlug } from '~/lib/posts'
 import { format } from 'date-fns'
 import Head from 'next/head'
+import type { MDXType } from '~/types/mdx'
+import { GetStaticPropsContext } from 'next'
 
-const PostDetail = ({ meta, source }: any) => {
+const PostDetail = ({ meta, source }: MDXType) => {
   const headTitle = `${meta.title} - Post Detail | RSurya99 - Rafli Surya Pratama Portfolio`
   return (
     <>
@@ -40,9 +42,9 @@ const PostDetail = ({ meta, source }: any) => {
   )
 }
 
-export async function getStaticProps({ params }: any) {
-  const { slug } = params
-  const { meta, source } = await getPostBySlug(slug)
+export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
+  const { params } = context
+  const { meta, source } = await getPostBySlug(params ? params.slug : '')
 
   return {
     props: {
@@ -54,7 +56,7 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   const slugs = getPostsSlug()
-  const paths = slugs.map((slug: any) => ({ params: { slug } }))
+  const paths = slugs.map((slug: string) => ({ params: { slug } }))
 
   return {
     paths,

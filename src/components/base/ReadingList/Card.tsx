@@ -1,7 +1,12 @@
 import React from 'react'
 import { IconArrowNarrowRight } from '@tabler/icons-react'
+import type { Reading }  from '~/types/reading'
 
-const ReadingListCard = ({ reading }: any) => {
+type Props = {
+  reading: Reading  
+}
+
+const ReadingListCard = ({ reading }: Props) => {
   return (
     <a href={reading.link} target='_blank' key={reading.link} className="w-full inline-block group rounded-lg bg-zinc-200 dark:bg-zinc-700 overflow-hidden cursor-pointer">
       <div className="px-4 py-3 flex items-center justify-between sm:justify-normal">

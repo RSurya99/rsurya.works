@@ -4,7 +4,7 @@ const useOutsideClick = (callback: Function) => {
   const ref = React.useRef<any>();
 
   React.useEffect(() => {
-    const handleClick = (event: any) => {
+    const handleClick = (event: Event) => {
       if (ref.current && !ref.current.contains(event.target)) {
         callback();
       }

@@ -7,8 +7,15 @@ import React from 'react'
 import DefaultLayout from '~/layouts/default'
 import { getPostsByCategory, getPostCategories } from '~/lib/posts'
 import Head from 'next/head'
+import type { Post } from '~/types/post'
+import { GetStaticPropsContext } from 'next'
 
-const PostCategoryDetail = ({ category, posts }: any) => {
+type Props = {
+  category: string,
+  posts: Post[]
+}
+
+const PostCategoryDetail = ({ category, posts }: Props) => {
   const headTitle = `${category}  - Post Category | RSurya99 - Rafli Surya Pratama Portfolio`
   return (
     <>
@@ -22,7 +29,7 @@ const PostCategoryDetail = ({ category, posts }: any) => {
         <h2 className='text-3xl sm:text-4xl font-semibold'>{category}</h2>
         <hr className='border border-primary/25' />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10">
-          {posts.map((post: any) => (
+          {posts.map((post: Post) => (
           <Link href={`/posts/${post.slug}`} key={post.slug} className="flex flex-col sm:flex-row lg:flex-col gap-3">
             <Image src={post.cover} width={400} height={235} alt='Post Image' className='w-full sm:w-[225px] lg:w-[400px] rounded-lg aspect-[16/10] object-cover object-center' />
             <div className="space-y-2">
@@ -40,10 +47,9 @@ const PostCategoryDetail = ({ category, posts }: any) => {
     </>
   )
 }
-
-export async function getStaticProps({ params }: any) {
-  const { category } = params
-  const categoryPost = startCase(toLower(category.split('-').join(' ')))
+export async function getStaticProps(context: GetStaticPropsContext<{ category: string }>) {
+  const { params } = context
+  const categoryPost = params ? startCase(toLower(params.category.split('-').join(' '))) : ''
   const posts = await getPostsByCategory(categoryPost)
   return {
     props: {
@@ -55,7 +61,7 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   const categories = getPostCategories()
-  const paths = categories.map((category: any) => ({ params: { category: kebabCase(category) } }))
+  const paths = categories.map((category: string) => ({ params: { category: kebabCase(category) } }))
   return {
     paths,
     fallback: false

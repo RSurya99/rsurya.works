@@ -16,8 +16,17 @@ import NextLogo from './NextLogo'
 import CSSLogo from './CSSLogo'
 import MDXLogo from './MDXLogo'
 
-const BaseLogo = ({ componentName, ...attributes }: any) => {
-  const componentsMap: any = { 
+type Props = {
+  componentName: string
+  [x: string]: any
+}
+
+type ComponentsMap = {
+  [x: string]: React.FC
+}
+
+const BaseLogo = ({ componentName, ...attributes }: Props) => {
+  const componentsMap: ComponentsMap = { 
     React: ReactLogo, 
     HTML: HTMLLogo, 
     Figma: FigmaLogo, 
@@ -35,7 +44,7 @@ const BaseLogo = ({ componentName, ...attributes }: any) => {
     CSS: CSSLogo,
     MDX: MDXLogo
   }
-  const ComponentName: any = componentsMap[componentName] || ReactLogo
+  const ComponentName: React.FC = componentsMap[componentName] || ReactLogo
   return (
     <ComponentName {...attributes} />
   )

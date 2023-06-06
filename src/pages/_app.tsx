@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }: Props) {
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
-      const logEvent = (url: any) => {
+      const logEvent = (url: string) => {
         analytics().setCurrentScreen(url);
         analytics().logEvent('screen_view');
       };

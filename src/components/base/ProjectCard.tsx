@@ -3,8 +3,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import BaseLogo from '../logo/Base'
 import { IconLink, IconBrandGithub } from '@tabler/icons-react'
+import type { Project } from '~/types/project'
 
-const ProjectCard = ({ project }: any) => {
+type Props = {
+  project: Project
+}
+
+const ProjectCard = ({ project }: Props) => {
   return (
     <Link href={`/projects/${project.slug}`} className="mb-2 flex flex-col justify-between bg-primary dark:bg-zinc-700 p-6 space-y-2 rounded-xl hover:-translate-y-2.5 transition duration-500 cursor-pointer">
       <div className="inline-block w-fit p-2 rounded-full bg-zinc-200">

@@ -7,6 +7,7 @@ import { flatten } from 'lodash'
 import useOutsideClick from '~/hooks/useClickOutside'
 import CheatsheetCard from '~/components/base/CheatsheetCard'
 import Head from 'next/head'
+import type { Cheatsheet, Cheatsheets } from '~/types/cheatsheet'
 
 export async function getStaticProps() {
   const cheatsheets = getMapCheatsheetsMeta()
@@ -20,7 +21,12 @@ export async function getStaticProps() {
   }
 }
 
-const CheatsheetIndex = ({ cheatsheets, categories }: any) => {
+type Props = {
+  cheatsheets: Cheatsheets,
+  categories: string[]
+}
+
+const CheatsheetIndex = ({ cheatsheets, categories }: Props) => {
   const [search, setSearch] = useState('')
   const [searchModal, setSearchModal] = useState(false)
   const [searchResult, setSearchResult] = useState<any[]>([])
@@ -39,7 +45,7 @@ const CheatsheetIndex = ({ cheatsheets, categories }: any) => {
     }
 
     const mappedCheatsheets = flatten(Object.keys(cheatsheets).map((key) => cheatsheets[key]))
-    const result = mappedCheatsheets.filter((cheatsheet: any) => cheatsheet.slug.toLowerCase().includes(search.toLowerCase()))
+    const result = mappedCheatsheets.filter((cheatsheet: Cheatsheet) => cheatsheet.slug.toLowerCase().includes(search.toLowerCase()))
     setSearchResult(result)
   }, [search])
 
@@ -65,23 +71,23 @@ const CheatsheetIndex = ({ cheatsheets, categories }: any) => {
           </div>
           <div className="relative w-full lg:max-w-md xl:max-w-lg">
             <div className='relative w-full'>
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5 dark:text-zinc-700">
                 <IconSearch />
               </div>
-              <input type="text" ref={ref} onFocus={handleSearchFocus} value={search} onChange={(e) => setSearch(e.target.value)} className='w-full pl-14 pr-5 py-3 text-base sm:text-lg border border-primary rounded-lg focus:outline-none' placeholder='Find Cheatsheet' />
+              <input type="text" ref={ref} onFocus={handleSearchFocus} value={search} onChange={(e) => setSearch(e.target.value)} className='w-full bg-zinc-200 pl-14 pr-5 py-3 text-base sm:text-lg border border-primary rounded-lg dark:text-primary outline-none focus:ring focus:ring-zinc-100 focus:ring-offset-2 focus:ring-offset-primary' placeholder='Find Cheatsheet' />
             </div>
             {searchModal && (
             <div className="absolute top-14 left-0 bg-white border border-primary w-full rounded-lg overflow-hidden divide-y divide-zinc-300">
               {searchResult.length > 0 ? 
-              searchResult.map((cheatsheet: any) => (
+              searchResult.map((cheatsheet: Cheatsheet) => (
               <Link key={cheatsheet.slug} href={`/cheatsheet/${cheatsheet.slug}`} className="p-2 flex flex-col space-y-1 hover:bg-zinc-300">
-                <span className='px-2 py-1 bg-primary text-zinc-50 w-fit text-sm rounded-md'>{cheatsheet.category}</span>
-                <div className='text-base'>{cheatsheet.slug}</div>
+                <span className='px-2 py-1 bg-primary text-zinc-100 w-fit text-sm rounded-md'>{cheatsheet.category}</span>
+                <div className='text-base dark:text-primary'>{cheatsheet.slug}</div>
               </Link>
               ))
               :
               <div className="p-2 flex flex-col space-y-1 hover:bg-zinc-300">
-                <div className='text-base'>no cheatsheet available with that name</div>
+                <div className='text-base dark:text-primary'>no cheatsheet available with that name</div>
               </div>
               }
             </div>
