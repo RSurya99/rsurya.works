@@ -58,7 +58,7 @@ const Footer = () => {
       <hr className="block sm:hidden bg-primary-300" />
       <div className="px-4 flex flex-col sm:flex-row items-center sm:items-start justify-between gap-y-2.5 sm:gap-y-0">
         <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' className="font-medium border-b-2 border-transparent hover:border-primary transition-colors duration-300">CC BY-NC-SA 4.0</a>
-        <span className="font-medium">&copy; 2023 - Present. Rafli Surya Pratama</span>
+        <span className="font-medium">&copy; 2024 - Present. Rafli Surya Pratama</span>
       </div>
     </footer>
   )
